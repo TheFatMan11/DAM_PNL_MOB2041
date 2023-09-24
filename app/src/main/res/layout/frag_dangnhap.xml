@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#C2FCFD"
     android:gravity="center"
     android:orientation="vertical">
@@ -10,86 +10,93 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="319dp"
-
         android:src="@drawable/img_login" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Đăng nhập"
-        android:textSize="32dp"
         android:textColor="#7E4AD6"
-        android:textStyle="bold"/>
+        android:textSize="32dp"
+        android:textStyle="bold" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
+        android:layout_margin="5dp"
         android:backgroundTint="#E2CCFF"
-android:layout_margin="5dp"
-        >
+        app:cardCornerRadius="10dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="15dp"
+            android:orientation="vertical"
             android:paddingTop="10dp"
-            android:orientation="vertical">
+            android:paddingBottom="15dp">
+
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/in_User"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="10dp"
                 android:layout_marginTop="10dp"
-                android:id="@+id/in_User">
+                android:paddingHorizontal="10dp">
+
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_txtUser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Tên Đăng Nhập"
-                    android:textSize="18dp"
-                    android:id="@+id/ed_txtUser"/>
+                    android:textSize="18dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/in_Pass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="10dp"
                 android:layout_marginTop="10dp"
-                app:passwordToggleEnabled="true"
-                android:id="@+id/in_Pass">
+                android:paddingHorizontal="10dp"
+                app:passwordToggleEnabled="true">
+
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_txtPass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Mật Khẩu"
-                    android:textSize="18dp"
                     android:inputType="textPassword"
-                    android:id="@+id/ed_txtPass"/>
+                    android:textSize="18dp" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                >
+                android:paddingRight="10dp">
+
                 <CheckBox
+                    android:id="@+id/cbk_luudangnhap"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Lưu đăng nhập"
                     android:textColor="#9D75F2"
-                    android:textStyle="bold"
-                    android:id="@+id/cbk_luudangnhap"/>
+                    android:textStyle="bold" />
+
                 <TextView
+                    android:id="@+id/tv_quenPass"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Quên mật khẩu"
-                    android:textStyle="italic|bold"
                     android:textColor="#9D75F2"
-                    android:id="@+id/quenPass"/>
+                    android:textStyle="italic|bold" />
             </LinearLayout>
+
             <Button
-                android:layout_width="wrap_content"
+                android:id="@+id/btn_dangNhap"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="Đăng nhập"
+                android:layout_gravity="center"
                 android:background="@drawable/shape_buton"
-                android:layout_gravity="center"/>
+                android:text="Đăng nhập" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

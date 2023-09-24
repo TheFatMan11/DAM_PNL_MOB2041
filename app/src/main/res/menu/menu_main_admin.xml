@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_Sach"
+        android:icon="@drawable/literature"
+        android:title="Quản lý sách" />
+    <item
+        android:id="@+id/menu_LoaiSach"
+        android:icon="@drawable/category"
+        android:title="Quản lý loại sách" />
+    <item
+        android:id="@+id/menu_thanhVien"
+        android:icon="@drawable/guests"
+        android:title="Quản lý thành viên" />
+    <item
+        android:id="@+id/menu_NguoiDung"
+        android:icon="@drawable/team"
+        android:title="Quản lý người dùng" />
+
+    <item android:title="Thống kê">
+        <menu>
+            <item android:id="@+id/menu_thongKe"
+                android:title="Thống kê báo cáo"
+                android:icon="@drawable/analysis"/>
+            <item android:id="@+id/menu_top10"
+                android:title="Top 10 sách mượn nhiều"
+                android:icon="@drawable/analysis"/>
+        </menu>
+    </item>
+    <item android:title="Khác">
+        <menu>
+            <item android:id="@+id/menu_timSach"
+                android:title="Tìm kiếm sách"
+                android:icon="@drawable/analysis"/>
+            <item android:id="@+id/menu_muonSach"
+                android:title="Mượn trả sách"
+                android:icon="@drawable/analysis"/>
+        </menu>
+    </item>
+    <item android:id="@+id/menu_dangXuat_admin"
+        android:title="Đăng xuất"
+        android:icon="@drawable/imglogout"/>
+</menu>

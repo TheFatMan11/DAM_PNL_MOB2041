@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="#C2FCFD"
+    app:cardCornerRadius="10dp">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
+    >
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"
+        android:text="Xem chi tiết"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:background="@drawable/shape_buton_mo"
+        android:id="@+id/btn_xemChiTiet"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"
+        android:text="Sửa sách"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:background="@drawable/shape_buton_mo"
+        android:id="@+id/btn_suaSach"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"
+        android:text="Xóa sách"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:background="@drawable/shape_buton_mo"
+        android:id="@+id/btn_xoaSach"/>
+</LinearLayout>
+</androidx.cardview.widget.CardView>

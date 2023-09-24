@@ -1,14 +1,14 @@
 package com.thuydev.dam;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-public class Activity_Main extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class Activity_Main_user extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_admin);
     }
 }

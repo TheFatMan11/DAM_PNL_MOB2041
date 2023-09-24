@@ -23,13 +23,13 @@ public class Activity_DangNhap extends AppCompatActivity {
                 frag_dangnhap = new Frag_dangnhap();
                 frag_begin = new Frag_begin();
                 FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().add(R.id.Frag_1,frag_begin).commit();
+                manager.beginTransaction().add(R.id.Frag_dangNhap,frag_begin).commit();
                 try {
                     sleep(3000);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                manager.beginTransaction().replace(R.id.Frag_1,frag_dangnhap).commit();
+                manager.beginTransaction().replace(R.id.Frag_dangNhap,frag_dangnhap).commit();
             }
         }.start();
     }

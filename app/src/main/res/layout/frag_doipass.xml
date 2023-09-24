@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#C2FCFD"
     android:gravity="center"
     android:orientation="vertical">
@@ -10,66 +10,72 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="319dp"
+        android:src="@drawable/img_quenpass" />
 
-        android:src="@drawable/img_quenPass" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Đổi mật khẩu"
-        android:textSize="32dp"
         android:textColor="#7E4AD6"
-        android:textStyle="bold"/>
+        android:textSize="32dp"
+        android:textStyle="bold" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
+        android:layout_margin="5dp"
         android:backgroundTint="#E2CCFF"
-android:layout_margin="5dp"
-        >
+        app:cardCornerRadius="10dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="15dp"
+            android:orientation="vertical"
             android:paddingTop="10dp"
-            android:orientation="vertical">
+            android:paddingBottom="15dp">
+
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/in_pass_doi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="10dp"
                 android:layout_marginTop="10dp"
-                app:passwordToggleEnabled="true"
-                android:id="@+id/in_pass_doi">
+                android:paddingHorizontal="10dp"
+                app:passwordToggleEnabled="true">
+
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_txtPass_doi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Mật khẩu"
-                    android:textSize="18dp"
-                    android:id="@+id/ed_txtPass_doi"/>
+                    android:textSize="18dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/in_RePass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="10dp"
                 android:layout_marginTop="10dp"
-                app:passwordToggleEnabled="true"
-                android:id="@+id/in_RePass">
+                android:paddingHorizontal="10dp"
+                app:passwordToggleEnabled="true">
+
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_txt_RePass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Xác thực mật khẩu"
-                    android:textSize="18dp"
                     android:inputType="textPassword"
-                    android:id="@+id/ed_txt_RePass"/>
+                    android:textSize="18dp" />
             </com.google.android.material.textfield.TextInputLayout>
-            <Button
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_doiPass"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="Đổi"
-                android:background="@drawable/shape_buton"
+                android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:layout_gravity="center"/>
+                android:background="@drawable/shape_buton_mo"
+                android:text="Đổi"
+                android:textColor="@color/white" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
