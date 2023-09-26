@@ -8,7 +8,47 @@ public class DTO_PhieuMuon {
     private String NgayMuon;
     private String NgayTra;
     private int trangThai;
+    // dữ liệu sách
+    private String tacGia;
+    private String tenSach;
+    private String ngayXuatBan;
     private int gia;
+    private int soLuongMuon;
+
+    public int getSoLuongMuon() {
+        return soLuongMuon;
+    }
+
+    public void setSoLuongMuon(int soLuongMuon) {
+        this.soLuongMuon = soLuongMuon;
+    }
+
+    public String getTacGia() {
+        return tacGia;
+    }
+
+    public void setTacGia(String tacGia) {
+        this.tacGia = tacGia;
+    }
+
+    public String getTenSach() {
+        return tenSach;
+    }
+
+    public void setTenSach(String tenSach) {
+        this.tenSach = tenSach;
+    }
+
+    public String getNgayXuatBan() {
+        return ngayXuatBan;
+    }
+
+    public void setNgayXuatBan(String ngayXuatBan) {
+        this.ngayXuatBan = ngayXuatBan;
+    }
+
+    public DTO_PhieuMuon() {
+    }
 
     public DTO_PhieuMuon(int soPhieu, int ID_ThuTHu, int ID_ThanhVien, int ID_Sach, String ngayMuon, String ngayTra, int trangThai) {
         this.soPhieu = soPhieu;

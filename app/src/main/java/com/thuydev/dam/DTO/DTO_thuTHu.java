@@ -9,6 +9,9 @@ public class DTO_thuTHu {
     private String Email;
     private int chucVu;
 
+    public DTO_thuTHu() {
+    }
+
     public DTO_thuTHu(int id_ThuThu, String tenNguoiDung, String maKhau, String hoTen, String diaChi, String email, int chucVu) {
         Id_ThuThu = id_ThuThu;
         this.tenNguoiDung = tenNguoiDung;
