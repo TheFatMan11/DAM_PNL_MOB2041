@@ -14,15 +14,17 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:scaleType="centerCrop"
-
-        android:background="@color/black"
+        android:src="@drawable/user"
+        android:layout_gravity="center"
         android:id="@+id/iv_anhSach"/>
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:padding="10dp"
+        android:paddingLeft="10dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,7 +32,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ID: "
+                android:text="Tên đăng nhập: "
                 android:textStyle="bold"
                 />
             <TextView
@@ -38,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:text="ID: "
                 android:textStyle="bold"
-                android:id="@+id/tv_masach"
+                android:id="@+id/tv_tenlogin_user"
                 />
         </LinearLayout>
         <LinearLayout
@@ -55,15 +57,16 @@
                 android:layout_height="wrap_content"
                 android:text="ID: "
                 android:textStyle="bold"
-                android:id="@+id/tv_tenSach"
+                android:id="@+id/tv_tenuser"
                 />
-        </LinearLayout><LinearLayout
+        </LinearLayout>
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Thể loại: "
+            android:text="Địa chỉ: "
             android:textStyle="bold"
             />
         <TextView
@@ -71,16 +74,61 @@
             android:layout_height="wrap_content"
             android:text="ID: "
             android:textStyle="bold"
-            android:id="@+id/tv_theLoai"
+            android:id="@+id/tv_diaChi_user"
             />
     </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email: "
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID: "
+                android:textStyle="bold"
+                android:id="@+id/tv_Email_user"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chức vụ: "
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID: "
+                android:textStyle="bold"
+                android:id="@+id/tv_chucvu_user"
+                />
+        </LinearLayout>
     </LinearLayout>
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/application"
-        android:layout_gravity="center"
-        android:layout_marginRight="10dp"
-        android:id="@+id/iv_menuThem"/>
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_gravity="center"
+       android:orientation="vertical">
+       <ImageView
+           android:layout_width="20dp"
+           android:layout_height="20dp"
+           android:layout_marginBottom="20dp"
+           android:src="@drawable/bin"
+           android:id="@+id/iv_xoaThanhVien"/>
+       <ImageView
+           android:layout_width="20dp"
+           android:layout_height="20dp"
+           android:src="@drawable/update"
+           android:id="@+id/iv_updateThanhVien"/>
+   </LinearLayout>
+
 </LinearLayout>
 </androidx.cardview.widget.CardView>
