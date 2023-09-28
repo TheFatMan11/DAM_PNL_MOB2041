@@ -47,6 +47,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Mật khẩu"
+                    android:inputType="textPassword"
                     android:textSize="18dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -56,8 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:paddingHorizontal="10dp"
-                app:passwordToggleEnabled="true"
-                >
+                app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/ed_txt_RePass"
@@ -67,6 +67,7 @@
                     android:inputType="textPassword"
                     android:textSize="18dp" />
             </com.google.android.material.textfield.TextInputLayout>
+
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_doiPass"
