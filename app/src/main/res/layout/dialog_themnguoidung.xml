@@ -47,89 +47,95 @@
             android:paddingLeft="10dp"
             />
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="5dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#9D75F2"
-            android:textStyle="bold"
-            android:text="Tên đăng nhập"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Hãy nhập tên đăng nhập"
-            android:id="@+id/edt_tenDangnhap_nd"
-            android:background="@drawable/shape_edt"
-            android:paddingLeft="10dp"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="5dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#9D75F2"
-            android:textStyle="bold"
-            android:text="Mật khẩu"/>
-       <com.google.android.material.textfield.TextInputLayout
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/ll_an"
+       android:orientation="vertical">
+       <LinearLayout
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           app:passwordToggleEnabled="true"
-           android:id="@+id/tl_pass_nd"
+           android:orientation="vertical"
+           android:paddingLeft="10dp"
+           android:paddingRight="10dp"
+           android:paddingBottom="5dp"
            >
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textColor="#9D75F2"
+               android:textStyle="bold"
+               android:text="Tên đăng nhập"/>
            <EditText
                android:layout_width="match_parent"
                android:layout_height="50dp"
-               android:hint="Hãy nhập mật khẩu"
-               android:id="@+id/edt_pass_nd"
+               android:hint="Hãy nhập tên đăng nhập"
+               android:id="@+id/edt_tenDangnhap_nd"
                android:background="@drawable/shape_edt"
                android:paddingLeft="10dp"
                />
-       </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="5dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#9D75F2"
-            android:textStyle="bold"
-            android:text="Nhập lại mật khẩu"/>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:passwordToggleEnabled="true"
-            android:id="@+id/tl_repass_nd"
-            >
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="Hãy nhập mật khẩu"
-                android:id="@+id/edt_rePass_nd"
-                android:background="@drawable/shape_edt"
-                android:paddingLeft="10dp"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
+       </LinearLayout>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:paddingLeft="10dp"
+           android:paddingRight="10dp"
+           android:paddingBottom="5dp"
+           >
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textColor="#9D75F2"
+               android:textStyle="bold"
+               android:text="Mật khẩu"/>
+           <com.google.android.material.textfield.TextInputLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               app:passwordToggleEnabled="true"
+               android:id="@+id/tl_pass_nd"
+               >
+               <EditText
+                   android:layout_width="match_parent"
+                   android:layout_height="50dp"
+                   android:hint="Hãy nhập mật khẩu"
+                   android:id="@+id/edt_pass_nd"
+                   android:background="@drawable/shape_edt"
+                   android:paddingLeft="10dp"
+                   />
+           </com.google.android.material.textfield.TextInputLayout>
+       </LinearLayout>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:paddingLeft="10dp"
+           android:paddingRight="10dp"
+           android:paddingBottom="5dp"
+           >
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textColor="#9D75F2"
+               android:textStyle="bold"
+               android:text="Nhập lại mật khẩu"/>
+           <com.google.android.material.textfield.TextInputLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               app:passwordToggleEnabled="true"
+               android:id="@+id/tl_repass_nd"
+               >
+               <EditText
+                   android:layout_width="match_parent"
+                   android:layout_height="50dp"
+                   android:hint="Hãy nhập mật khẩu"
+                   android:id="@+id/edt_rePass_nd"
+                   android:background="@drawable/shape_edt"
+                   android:paddingLeft="10dp"
+                   />
+           </com.google.android.material.textfield.TextInputLayout>
+       </LinearLayout>
+   </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -167,14 +173,30 @@
             android:textColor="#9D75F2"
             android:textStyle="bold"
             android:text="Email"/>
-        <EditText
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Hãy nhập email"
-            android:id="@+id/edt_email_nd"
+            android:layout_height="wrap_content"
             android:background="@drawable/shape_edt"
-            android:paddingLeft="10dp"
-            />
+            >
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:hint="Hãy nhập email"
+                android:id="@+id/edt_email_nd"
+                android:background="@drawable/shape_edt"
+                android:paddingLeft="10dp"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp"
+                android:text="@string/Email"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                />
+        </LinearLayout>
     </LinearLayout>
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="100dp"
@@ -183,6 +205,6 @@
         android:textStyle="bold"
         android:background="@drawable/shape_buton_mo"
         android:textColor="@color/white"
-        android:id="@+id/bnt_add_nguoidung"/>
+        android:id="@+id/btn_add_nguoidung"/>
 </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -56,7 +56,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:paddingHorizontal="10dp"
-                app:passwordToggleEnabled="true">
+                app:passwordToggleEnabled="true"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/ed_txt_RePass"

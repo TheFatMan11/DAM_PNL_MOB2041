@@ -88,4 +88,12 @@ public class DTO_thuTHu implements Serializable {
     public void setChucVu(int chucVu) {
         this.chucVu = chucVu;
     }
+
+    public String returnChucVu(){
+        if (chucVu==1){
+            return "Admin";
+        }else {
+            return "Thủ thư";
+        }
+    };
 }

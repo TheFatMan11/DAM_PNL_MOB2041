@@ -92,9 +92,13 @@ public class Activity_Main_admin extends AppCompatActivity {
                     manager.beginTransaction().replace(R.id.Frag_main,new Frag_top10()).commit();
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (item.getItemId()==R.id.menu_QuanLyTaiKhoan) {
-                    toolbar.setTitle("Quản lý tài khoản");
-                    manager.beginTransaction().replace(R.id.Frag_main,new Frag_taiKhoan()).commit();
-                    drawerLayout.closeDrawer(GravityCompat.START);
+                   if(dto_thuTHu.getChucVu()==1){
+                       toolbar.setTitle("Quản lý tài khoản");
+                       manager.beginTransaction().replace(R.id.Frag_main,new Frag_taiKhoan()).commit();
+                       drawerLayout.closeDrawer(GravityCompat.START);
+                   }else {
+                       Toast.makeText(Activity_Main_admin.this, "Chức năng này chỉ có Admin được dùng", Toast.LENGTH_SHORT).show();
+                   }
                 } else if (item.getItemId()==R.id.menu_DoiMatKhau) {
                     toolbar.setTitle("Đổi mật khẩu");
                     Intent intent1 = new Intent(Activity_Main_admin.this, Activity_DoiPass.class);
@@ -106,7 +110,6 @@ public class Activity_Main_admin extends AppCompatActivity {
                 }else {
                     Toast.makeText(Activity_Main_admin.this, "Lỗi", Toast.LENGTH_SHORT).show();
                 }
-
                 return false;
             }
         });

@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="10dp"
     app:cardCornerRadius="10dp">
 <LinearLayout
     android:layout_width="match_parent"
@@ -122,12 +123,12 @@
            android:layout_height="20dp"
            android:layout_marginBottom="20dp"
            android:src="@drawable/bin"
-           android:id="@+id/iv_xoaThanhVien"/>
+           android:id="@+id/iv_xoa_user"/>
        <ImageView
            android:layout_width="20dp"
            android:layout_height="20dp"
            android:src="@drawable/update"
-           android:id="@+id/iv_updateThanhVien"/>
+           android:id="@+id/iv_update_user"/>
    </LinearLayout>
 
 </LinearLayout>
