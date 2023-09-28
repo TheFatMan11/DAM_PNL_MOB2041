@@ -1,6 +1,8 @@
 package com.thuydev.dam.DTO;
 
-public class DTO_thuTHu {
+import java.io.Serializable;
+
+public class DTO_thuTHu implements Serializable {
     private int Id_ThuThu;
     private String tenNguoiDung;
     private String maKhau;

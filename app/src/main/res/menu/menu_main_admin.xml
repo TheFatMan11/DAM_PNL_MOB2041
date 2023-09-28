@@ -12,10 +12,9 @@
         android:id="@+id/menu_thanhVien"
         android:icon="@drawable/guests"
         android:title="Quản lý thành viên" />
-    <item
-        android:id="@+id/menu_NguoiDung"
-        android:icon="@drawable/team"
-        android:title="Quản lý người dùng" />
+    <item android:id="@+id/menu_muonSach"
+        android:title="Mượn trả sách"
+        android:icon="@drawable/borrow"/>
 
     <item android:title="Thống kê">
         <menu>
@@ -27,14 +26,14 @@
                 android:icon="@drawable/analysis"/>
         </menu>
     </item>
-    <item android:title="Khác">
+    <item android:title="Tài khoản">
         <menu>
-            <item android:id="@+id/menu_timSach"
-                android:title="Tìm kiếm sách"
-                android:icon="@drawable/analysis"/>
-            <item android:id="@+id/menu_muonSach"
-                android:title="Mượn trả sách"
-                android:icon="@drawable/analysis"/>
+            <item android:id="@+id/menu_QuanLyTaiKhoan"
+                android:title="Quản lý tài khoản (Admin)"
+                android:icon="@drawable/team"/>
+            <item android:id="@+id/menu_DoiMatKhau"
+                android:title="Đổi mật khẩu"
+                android:icon="@drawable/doipass"/>
         </menu>
     </item>
     <item android:id="@+id/menu_dangXuat_admin"

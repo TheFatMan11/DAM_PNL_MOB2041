@@ -5,24 +5,21 @@ import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.thuydev.dam.DTO.DTO_thuTHu;
-import com.thuydev.dam.Fragment.Frag_QuenPass;
+import com.thuydev.dam.Fragment.Frag_doiPass;
+import com.thuydev.dam.Fragment.Frag_thongke;
 
-public class Activity_QuenPass extends AppCompatActivity {
-DTO_thuTHu dto_thuTHu;
+public class Activity_DoiPass extends AppCompatActivity {
+    DTO_thuTHu dto_thuTHu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quen_pass);
-        Frag_QuenPass frag_quenPass = new Frag_QuenPass();
+        setContentView(R.layout.activity_doi_pass);
+        Intent intent = getIntent();
+        dto_thuTHu = (DTO_thuTHu) intent.getSerializableExtra("user");
         FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().add(R.id.Frag_quenPass,frag_quenPass).commit();
-    }
-
-    public void getData(DTO_thuTHu dto_thuTHu){
-        this.dto_thuTHu = dto_thuTHu;
+        manager.beginTransaction().add(R.id.Frag_doiPass, new Frag_doiPass()).commit();
     }
     public DTO_thuTHu returnData(){
         return dto_thuTHu;

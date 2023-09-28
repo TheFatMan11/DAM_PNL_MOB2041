@@ -54,14 +54,25 @@ public class DAO_ThuThu {
        return db.update("tb_thuThu",values,"id_thuThu=?",index);
     }
 
-    public DTO_thuTHu getNDDangNhap(String tenTaiKhoan,String MatKhau){
-        DTO_thuTHu a = new DTO_thuTHu();
+    public int updatePass(DTO_thuTHu dto_thuTHu){
+        ContentValues values = new ContentValues();
+        values.put("maKhau",dto_thuTHu.getMaKhau());
+        String [] index = new String[]{
+                String.valueOf(dto_thuTHu.getId_ThuThu())
+        };
+
+        return db.update("tb_thuThu",values,"id_thuThu=?",index);
+    }
+    public List<DTO_thuTHu> getNDDangNhap(String tenTaiKhoan,String MatKhau){
+
+        List<DTO_thuTHu> list= new ArrayList<>();
         String [] data = new String[]{
                 tenTaiKhoan,MatKhau
         };
         Cursor c = db.rawQuery("select * from tb_thuThu where tenNguoiDung=? and maKhau=?",data);
         if(c!=null&&c.getCount()>0){
             c.moveToFirst();
+            DTO_thuTHu a = new DTO_thuTHu();
             a.setId_ThuThu(c.getInt(0));
             a.setTenNguoiDung(c.getString(1));
             a.setMaKhau(c.getString(2));
@@ -69,8 +80,31 @@ public class DAO_ThuThu {
             a.setDiaChi(c.getString(4));
             a.setEmail(c.getString(5));
             a.setChucVu(c.getInt(6));
+            list.add(a);
         }
-        return a;
+        return list;
+    }
+
+    public List<DTO_thuTHu> getQuenPass(String tenTaiKhoan,String email){
+
+        List<DTO_thuTHu> list= new ArrayList<>();
+        String [] data = new String[]{
+                tenTaiKhoan,email
+        };
+        Cursor c = db.rawQuery("select * from tb_thuThu where tenNguoiDung=? and email=?",data);
+        if(c!=null&&c.getCount()>0){
+            c.moveToFirst();
+            DTO_thuTHu a = new DTO_thuTHu();
+            a.setId_ThuThu(c.getInt(0));
+            a.setTenNguoiDung(c.getString(1));
+            a.setMaKhau(c.getString(2));
+            a.setHoTen(c.getString(3));
+            a.setDiaChi(c.getString(4));
+            a.setEmail(c.getString(5));
+            a.setChucVu(c.getInt(6));
+            list.add(a);
+        }
+        return list;
     }
 
     public List<DTO_thuTHu> getAll(){
