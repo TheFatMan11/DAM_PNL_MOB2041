@@ -1,4 +1,4 @@
-package com.thuydev.dam.Adapter;
+package com.thuydev.dam.adapter;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -6,14 +6,12 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,10 +19,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.thuydev.dam.DAO.DAO_LoaiSach;
-import com.thuydev.dam.DAO.DAO_ThuThu;
-import com.thuydev.dam.DTO.DTO_LoaiSach;
-import com.thuydev.dam.DTO.DTO_thuTHu;
+import com.thuydev.dam.dao.LoaiSachDAO;
+import com.thuydev.dam.dto.DTO_LoaiSach;
 import com.thuydev.dam.R;
 
 import java.util.List;
@@ -32,14 +28,14 @@ import java.util.List;
 public class Adapter_LoaiSach extends RecyclerView.Adapter<Adapter_LoaiSach.ViewHolder> {
     Context context;
     List<DTO_LoaiSach> list;
-    DAO_LoaiSach dao_loaiSach;
+    LoaiSachDAO _loaiSachDAO;
     EditText editText;
     ImageButton imageButton,soSanh;
     int swichEDT = 0;
     public Adapter_LoaiSach(Context context, List<DTO_LoaiSach> list) {
         this.context = context;
         this.list = list;
-        dao_loaiSach = new DAO_LoaiSach(context);
+        _loaiSachDAO = new LoaiSachDAO(context);
         soSanh = new ImageButton(context);
         soSanh.setBackgroundResource(R.drawable.loop);
     }
@@ -114,10 +110,10 @@ public class Adapter_LoaiSach extends RecyclerView.Adapter<Adapter_LoaiSach.View
     private void addLoai() {
         DTO_LoaiSach dto_loaiSach = new DTO_LoaiSach();
         dto_loaiSach.setTenLoai(editText.getText().toString().trim());
-        if(dao_loaiSach.addLoaiSach(dto_loaiSach)>0){
+        if(_loaiSachDAO.addLoaiSach(dto_loaiSach)>0){
             Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
             list.clear();
-            list.addAll(dao_loaiSach.getAll());
+            list.addAll(_loaiSachDAO.getAll());
             notifyDataSetChanged();
         }
     }
@@ -135,7 +131,7 @@ public class Adapter_LoaiSach extends RecyclerView.Adapter<Adapter_LoaiSach.View
                         if(!editText.getText().toString().isEmpty()){
                            try {
                                swichEDT = 0;
-                               if (dao_loaiSach.capNhapLoaaiSach(dto_loaiSach) > 0) {
+                               if (_loaiSachDAO.capNhapLoaaiSach(dto_loaiSach) > 0) {
                                    Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
                                    notifyDataSetChanged();
                                    editText.setText("");
@@ -159,10 +155,10 @@ public class Adapter_LoaiSach extends RecyclerView.Adapter<Adapter_LoaiSach.View
         builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if (dao_loaiSach.xoaLoaiSach(list.get(p)) > 0) {
+                if (_loaiSachDAO.xoaLoaiSach(list.get(p)) > 0) {
                     Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
                     list.clear();
-                    list.addAll(dao_loaiSach.getAll());
+                    list.addAll(_loaiSachDAO.getAll());
                     notifyDataSetChanged();
                     dialog.dismiss();
                 }

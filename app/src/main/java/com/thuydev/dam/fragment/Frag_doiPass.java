@@ -1,4 +1,4 @@
-package com.thuydev.dam.Fragment;
+package com.thuydev.dam.fragment;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,12 +16,12 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.thuydev.dam.Activity_DoiPass;
 import com.thuydev.dam.Activity_QuenPass;
-import com.thuydev.dam.DAO.DAO_ThuThu;
-import com.thuydev.dam.DTO.DTO_thuTHu;
+import com.thuydev.dam.dao.ThuThuDAO;
+import com.thuydev.dam.dto.DTO_thuTHu;
 import com.thuydev.dam.R;
 
 public class Frag_doiPass extends Fragment {
-    DAO_ThuThu dao_thuThu;
+    ThuThuDAO _thuThuDAO;
     TextInputLayout thongBao_Mk,thongBao_reMk;
     TextInputEditText matKhau,ReMaktKhau;
     Button doiPass;
@@ -34,7 +34,7 @@ public class Frag_doiPass extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        dao_thuThu = new DAO_ThuThu(getContext());
+        _thuThuDAO = new ThuThuDAO(getContext());
         thongBao_Mk = view.findViewById(R.id.in_pass_doi);
         thongBao_reMk = view.findViewById(R.id.in_RePass);
         matKhau = view.findViewById(R.id.ed_txtPass_doi);
@@ -54,7 +54,7 @@ public class Frag_doiPass extends Fragment {
                    Activity_QuenPass activity_quenPass = (Activity_QuenPass) getActivity();
                    dto_thuTHu = activity_quenPass.returnData();
                    dto_thuTHu.setMaKhau(matKhau.getText().toString().trim());
-                   if(dao_thuThu.updatePass(dto_thuTHu)>0){
+                   if(_thuThuDAO.updatePass(dto_thuTHu)>0){
                        Toast.makeText(activity_quenPass, "Đổi thành oông", Toast.LENGTH_SHORT).show();
                        getActivity().finish();
                    }
@@ -62,7 +62,7 @@ public class Frag_doiPass extends Fragment {
                    Activity_DoiPass activity_quenPass = (Activity_DoiPass) getActivity();
                    dto_thuTHu = activity_quenPass.returnData();
                    dto_thuTHu.setMaKhau(matKhau.getText().toString().trim());
-                   if (dao_thuThu.updatePass(dto_thuTHu) > 0) {
+                   if (_thuThuDAO.updatePass(dto_thuTHu) > 0) {
                        Toast.makeText(activity_quenPass, "Đổi thành oông", Toast.LENGTH_SHORT).show();
                        activity_quenPass.finish();
                    }

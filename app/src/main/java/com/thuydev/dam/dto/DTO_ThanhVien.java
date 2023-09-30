@@ -1,4 +1,4 @@
-package com.thuydev.dam.DTO;
+package com.thuydev.dam.dto;
 
 public class DTO_ThanhVien {
     private int ID_ThanhVien;

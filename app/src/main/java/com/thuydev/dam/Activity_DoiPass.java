@@ -6,9 +6,8 @@ import androidx.fragment.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.thuydev.dam.DTO.DTO_thuTHu;
-import com.thuydev.dam.Fragment.Frag_doiPass;
-import com.thuydev.dam.Fragment.Frag_thongke;
+import com.thuydev.dam.dto.DTO_thuTHu;
+import com.thuydev.dam.fragment.Frag_doiPass;
 
 public class Activity_DoiPass extends AppCompatActivity {
     DTO_thuTHu dto_thuTHu;

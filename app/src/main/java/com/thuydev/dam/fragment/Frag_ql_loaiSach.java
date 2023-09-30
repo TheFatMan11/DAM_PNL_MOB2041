@@ -1,4 +1,4 @@
-package com.thuydev.dam.Fragment;
+package com.thuydev.dam.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,9 +14,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.thuydev.dam.Adapter.Adapter_LoaiSach;
-import com.thuydev.dam.DAO.DAO_LoaiSach;
-import com.thuydev.dam.DTO.DTO_LoaiSach;
+import com.thuydev.dam.adapter.Adapter_LoaiSach;
+import com.thuydev.dam.dao.LoaiSachDAO;
+import com.thuydev.dam.dto.DTO_LoaiSach;
 import com.thuydev.dam.R;
 
 import java.util.List;
@@ -28,7 +28,7 @@ public class Frag_ql_loaiSach extends Fragment {
     int swichEDT = 0;
     Adapter_LoaiSach adapter_loaiSach;
     List<DTO_LoaiSach> list;
-    DAO_LoaiSach dao_loaiSach;
+    LoaiSachDAO _loaiSachDAO;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -41,8 +41,8 @@ public class Frag_ql_loaiSach extends Fragment {
         rc_list = view.findViewById(R.id.rcv_listLoaiSach);
         editText = view.findViewById(R.id.edt_add_loai);
         add = view.findViewById(R.id.ibtn_add_Loaisach);
-        dao_loaiSach = new DAO_LoaiSach(getContext());
-        list = dao_loaiSach.getAll();
+        _loaiSachDAO = new LoaiSachDAO(getContext());
+        list = _loaiSachDAO.getAll();
         adapter_loaiSach = new Adapter_LoaiSach(getContext(),list);
         LinearLayoutManager manager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         rc_list.setLayoutManager(manager);
@@ -76,10 +76,10 @@ public class Frag_ql_loaiSach extends Fragment {
     private void addLoai() {
         DTO_LoaiSach dto_loaiSach = new DTO_LoaiSach();
         dto_loaiSach.setTenLoai(editText.getText().toString().trim());
-        if(dao_loaiSach.addLoaiSach(dto_loaiSach)>0){
+        if(_loaiSachDAO.addLoaiSach(dto_loaiSach)>0){
             Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
             list.clear();
-            list.addAll(dao_loaiSach.getAll());
+            list.addAll(_loaiSachDAO.getAll());
             adapter_loaiSach.notifyDataSetChanged();
         }
     }

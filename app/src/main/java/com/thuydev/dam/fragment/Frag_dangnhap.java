@@ -1,4 +1,4 @@
-package com.thuydev.dam.Fragment;
+package com.thuydev.dam.fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,8 +21,8 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.thuydev.dam.Activity_Main;
 import com.thuydev.dam.Activity_QuenPass;
-import com.thuydev.dam.DAO.DAO_ThuThu;
-import com.thuydev.dam.DTO.DTO_thuTHu;
+import com.thuydev.dam.dao.ThuThuDAO;
+import com.thuydev.dam.dto.DTO_thuTHu;
 import com.thuydev.dam.R;
 
 import java.util.List;
@@ -33,7 +33,7 @@ public class Frag_dangnhap extends Fragment {
     Button dangNhap;
     TextView quenPass;
     CheckBox luu;
-    DAO_ThuThu dao_thuThu;
+    ThuThuDAO _thuThuDAO;
     DTO_thuTHu dto_thuTHu;
     SharedPreferences sharedPreferences;
 
@@ -53,7 +53,7 @@ public class Frag_dangnhap extends Fragment {
         thongBao_ten = view.findViewById(R.id.in_User);
         quenPass = view.findViewById(R.id.tv_quenPass);
         luu = view.findViewById(R.id.cbk_luudangnhap);
-        dao_thuThu = new DAO_ThuThu(getContext());
+        _thuThuDAO = new ThuThuDAO(getContext());
         sharedPreferences = getActivity().getSharedPreferences("data",Context.MODE_PRIVATE);
         if(sharedPreferences.getBoolean("luu",false)){
             tenDangNhap.setText(sharedPreferences.getString("ten",""));
@@ -87,7 +87,7 @@ public class Frag_dangnhap extends Fragment {
 
     private void dangNhapMain() {
         if (!tenDangNhap.getText().toString().trim().isEmpty() && !matKhau.getText().toString().trim().isEmpty()) {
-            List<DTO_thuTHu> list = dao_thuThu.getNDDangNhap(tenDangNhap.getText().toString().trim(), matKhau.getText().toString().trim());
+            List<DTO_thuTHu> list = _thuThuDAO.getNDDangNhap(tenDangNhap.getText().toString().trim(), matKhau.getText().toString().trim());
             if (list.size()>0) {
                 Toast.makeText(getContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getContext(), Activity_Main.class);

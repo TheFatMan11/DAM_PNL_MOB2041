@@ -1,4 +1,4 @@
-package com.thuydev.dam.Fragment;
+package com.thuydev.dam.fragment;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -18,9 +18,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.thuydev.dam.Adapter.Adapter_thanhVien;
-import com.thuydev.dam.DAO.DAO_ThanhVien;
-import com.thuydev.dam.DTO.DTO_ThanhVien;
+import com.thuydev.dam.adapter.Adapter_thanhVien;
+import com.thuydev.dam.dao.ThanhVienDAO;
+import com.thuydev.dam.dto.DTO_ThanhVien;
 import com.thuydev.dam.R;
 
 import java.util.List;
@@ -30,7 +30,7 @@ public class Frag_ql_thanhvien extends Fragment {
     ImageButton addThanhvien;
     List<DTO_ThanhVien>list;
     Adapter_thanhVien adapter_thanhVien;
-    DAO_ThanhVien dao_thanhVien;
+    ThanhVienDAO _thanhVienDAO;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -42,8 +42,8 @@ public class Frag_ql_thanhvien extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         rc_list = view.findViewById(R.id.rcv_listKhachHang);
         addThanhvien = view.findViewById(R.id.ibtn_add_khachHang);
-        dao_thanhVien = new DAO_ThanhVien(getContext());
-        list = dao_thanhVien.getAll();
+        _thanhVienDAO = new ThanhVienDAO(getContext());
+        list = _thanhVienDAO.getAll();
         adapter_thanhVien = new Adapter_thanhVien(getContext(),list);
         LinearLayoutManager manager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         rc_list.setAdapter(adapter_thanhVien);
@@ -79,10 +79,10 @@ public class Frag_ql_thanhvien extends Fragment {
                     dto_thanhVien.setHoTen(ten.getText().toString().trim());
                     dto_thanhVien.setDiaChi(diaChi.getText().toString().trim());
                     dto_thanhVien.setEmail(email.getText().toString().trim()+"@gmail.com");
-                    if (dao_thanhVien.addThanhNien(dto_thanhVien)>0){
+                    if (_thanhVienDAO.addThanhNien(dto_thanhVien)>0){
                         Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
                         list.clear();
-                        list.addAll(dao_thanhVien.getAll());
+                        list.addAll(_thanhVienDAO.getAll());
                         adapter_thanhVien.notifyDataSetChanged();
                         dialog.dismiss();
                     }

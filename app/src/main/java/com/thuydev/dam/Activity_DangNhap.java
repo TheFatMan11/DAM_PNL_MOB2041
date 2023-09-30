@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
+import android.os.Handler;
 
-import com.thuydev.dam.Fragment.Frag_begin;
-import com.thuydev.dam.Fragment.Frag_dangnhap;
+import com.thuydev.dam.fragment.Frag_begin;
+import com.thuydev.dam.fragment.Frag_dangnhap;
+
 
 public class Activity_DangNhap extends AppCompatActivity {
 
@@ -19,23 +21,18 @@ public class Activity_DangNhap extends AppCompatActivity {
     }
 
     private void Loading() {
-        new Thread(){
-            Frag_begin frag_begin;
-            Frag_dangnhap frag_dangnhap;
+        Frag_begin frag_begin;
+        Frag_dangnhap frag_dangnhap;
+        frag_dangnhap = new Frag_dangnhap();
+        frag_begin = new Frag_begin();
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().add(R.id.Frag_dangNhap,frag_begin).commit();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                super.run();
-                frag_dangnhap = new Frag_dangnhap();
-                frag_begin = new Frag_begin();
-                FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().add(R.id.Frag_dangNhap,frag_begin).commit();
-                try {
-                    sleep(3000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
                 manager.beginTransaction().replace(R.id.Frag_dangNhap,frag_dangnhap).commit();
             }
-        }.start();
+        }, 3000);
     }
 }

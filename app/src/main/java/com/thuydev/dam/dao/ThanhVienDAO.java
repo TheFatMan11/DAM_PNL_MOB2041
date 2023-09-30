@@ -1,23 +1,23 @@
-package com.thuydev.dam.DAO;
+package com.thuydev.dam.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.thuydev.dam.DATABASE.DB_PNL;
-import com.thuydev.dam.DTO.DTO_ThanhVien;
+import com.thuydev.dam.database.Dbhelper;
+import com.thuydev.dam.dto.DTO_ThanhVien;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DAO_ThanhVien {
+public class ThanhVienDAO {
     SQLiteDatabase db;
-    DB_PNL db_pnl;
+    Dbhelper dbhelper;
 
-    public DAO_ThanhVien(Context context){
-        db_pnl = new DB_PNL(context);
-        db = db_pnl.getWritableDatabase();
+    public ThanhVienDAO(Context context){
+        dbhelper = new Dbhelper(context);
+        db = dbhelper.getWritableDatabase();
     }
 
     public long addThanhNien(DTO_ThanhVien dto_thanhVien){

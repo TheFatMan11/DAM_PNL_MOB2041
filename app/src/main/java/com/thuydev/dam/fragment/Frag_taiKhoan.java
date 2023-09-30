@@ -1,4 +1,4 @@
-package com.thuydev.dam.Fragment;
+package com.thuydev.dam.fragment;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,9 +18,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textfield.TextInputLayout;
-import com.thuydev.dam.Adapter.Adapter_nguoiDung;
-import com.thuydev.dam.DAO.DAO_ThuThu;
-import com.thuydev.dam.DTO.DTO_thuTHu;
+import com.thuydev.dam.adapter.Adapter_nguoiDung;
+import com.thuydev.dam.dao.ThuThuDAO;
+import com.thuydev.dam.dto.DTO_thuTHu;
 import com.thuydev.dam.R;
 
 import java.util.List;
@@ -30,7 +28,7 @@ import java.util.List;
 public class Frag_taiKhoan extends Fragment {
     RecyclerView rc_list;
     ImageButton add;
-    DAO_ThuThu dao_thuThu;
+    ThuThuDAO _thuThuDAO;
     Adapter_nguoiDung adapter_nguoiDung;
     List<DTO_thuTHu> list;
 
@@ -45,8 +43,8 @@ public class Frag_taiKhoan extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         rc_list = view.findViewById(R.id.rcv_listNguoiDung);
         add = view.findViewById(R.id.ibtn_add_nguoiDung);
-        dao_thuThu = new DAO_ThuThu(getContext());
-        list = dao_thuThu.getAll();
+        _thuThuDAO = new ThuThuDAO(getContext());
+        list = _thuThuDAO.getAll();
         adapter_nguoiDung = new Adapter_nguoiDung(getContext(),list);
         LinearLayoutManager manager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         rc_list.setAdapter(adapter_nguoiDung);
@@ -94,10 +92,10 @@ public class Frag_taiKhoan extends Fragment {
                         dto_thuTHu.setMaKhau(matKhau.getText().toString().trim());
                         dto_thuTHu.setDiaChi(diaChi.getText().toString().trim());
                         dto_thuTHu.setEmail(Email.getText().toString().trim()+"@gmail.com");
-                        if (dao_thuThu.addThuThu(dto_thuTHu) > 0) {
+                        if (_thuThuDAO.addThuThu(dto_thuTHu) > 0) {
                             Toast.makeText(getContext(), "Thêm thành công ", Toast.LENGTH_SHORT).show();
                             list.clear();
-                            list.addAll(dao_thuThu.getAll());
+                            list.addAll(_thuThuDAO.getAll());
                             adapter_nguoiDung.notifyDataSetChanged();
                             dialog.dismiss();
                         }

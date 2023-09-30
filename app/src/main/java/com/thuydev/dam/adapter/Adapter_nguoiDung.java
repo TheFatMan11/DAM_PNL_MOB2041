@@ -1,4 +1,4 @@
-package com.thuydev.dam.Adapter;
+package com.thuydev.dam.adapter;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -20,9 +19,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.textfield.TextInputLayout;
-import com.thuydev.dam.DAO.DAO_ThuThu;
-import com.thuydev.dam.DTO.DTO_thuTHu;
+import com.thuydev.dam.dao.ThuThuDAO;
+import com.thuydev.dam.dto.DTO_thuTHu;
 import com.thuydev.dam.R;
 
 import java.util.List;
@@ -30,12 +28,12 @@ import java.util.List;
 public class Adapter_nguoiDung extends RecyclerView.Adapter<Adapter_nguoiDung.ViewHolder> {
     Context context;
     List<DTO_thuTHu> list;
-    DAO_ThuThu dao_thuThu;
+    ThuThuDAO _thuThuDAO;
 
     public Adapter_nguoiDung(Context context, List<DTO_thuTHu> list) {
         this.context = context;
         this.list = list;
-        dao_thuThu = new DAO_ThuThu(context);
+        _thuThuDAO = new ThuThuDAO(context);
     }
 
     @NonNull
@@ -103,10 +101,10 @@ public class Adapter_nguoiDung extends RecyclerView.Adapter<Adapter_nguoiDung.Vi
                         dto_thuTHu.setHoTen(hoTen.getText().toString().trim());
                         dto_thuTHu.setDiaChi(diaChi.getText().toString().trim());
                         dto_thuTHu.setEmail(Email.getText().toString().trim()+"@gmail.com");
-                        if (dao_thuThu.update(dto_thuTHu) > 0) {
+                        if (_thuThuDAO.update(dto_thuTHu) > 0) {
                             Toast.makeText(context, "Sửa thành công ", Toast.LENGTH_SHORT).show();
                             list.clear();
-                            list.addAll(dao_thuThu.getAll());
+                            list.addAll(_thuThuDAO.getAll());
                             notifyDataSetChanged();
                             dialog.dismiss();
                         }
@@ -133,10 +131,10 @@ public class Adapter_nguoiDung extends RecyclerView.Adapter<Adapter_nguoiDung.Vi
         builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if(dao_thuThu.xoaThuThu(list.get(p))>0){
+                if(_thuThuDAO.xoaThuThu(list.get(p))>0){
                     Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
                     list.clear();
-                    list.addAll(dao_thuThu.getAll());
+                    list.addAll(_thuThuDAO.getAll());
                     notifyDataSetChanged();
                     dialog.dismiss();
                 }

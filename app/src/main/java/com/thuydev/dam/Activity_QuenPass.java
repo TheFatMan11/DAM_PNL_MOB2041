@@ -3,12 +3,10 @@ package com.thuydev.dam;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
-import com.thuydev.dam.DTO.DTO_thuTHu;
-import com.thuydev.dam.Fragment.Frag_QuenPass;
+import com.thuydev.dam.dto.DTO_thuTHu;
+import com.thuydev.dam.fragment.Frag_QuenPass;
 
 public class Activity_QuenPass extends AppCompatActivity {
 DTO_thuTHu dto_thuTHu;

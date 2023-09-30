@@ -1,4 +1,4 @@
-package com.thuydev.dam.Fragment;
+package com.thuydev.dam.fragment;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,8 +14,8 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.thuydev.dam.Activity_QuenPass;
-import com.thuydev.dam.DAO.DAO_ThuThu;
-import com.thuydev.dam.DTO.DTO_thuTHu;
+import com.thuydev.dam.dao.ThuThuDAO;
+import com.thuydev.dam.dto.DTO_thuTHu;
 import com.thuydev.dam.R;
 
 import java.util.List;
@@ -51,8 +51,8 @@ public class Frag_QuenPass extends Fragment {
 
     private void CheckData() {
         if(!tenDangNhap.getText().toString().trim().isEmpty()&&!Email.getText().toString().trim().isEmpty()){
-            DAO_ThuThu  dao_thuThu = new DAO_ThuThu(getContext());
-            List<DTO_thuTHu> list =dao_thuThu.getQuenPass(tenDangNhap.getText().toString().trim(),Email.getText().toString().trim());
+            ThuThuDAO _thuThuDAO = new ThuThuDAO(getContext());
+            List<DTO_thuTHu> list = _thuThuDAO.getQuenPass(tenDangNhap.getText().toString().trim(),Email.getText().toString().trim());
             if(list.size()>0){
                 Frag_doiPass frag_doiPass = new Frag_doiPass();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.Frag_quenPass,frag_doiPass).commit();

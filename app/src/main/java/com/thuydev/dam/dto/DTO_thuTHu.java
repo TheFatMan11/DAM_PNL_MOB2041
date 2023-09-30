@@ -1,4 +1,4 @@
-package com.thuydev.dam.DTO;
+package com.thuydev.dam.dto;
 
 import java.io.Serializable;
 

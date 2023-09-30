@@ -1,4 +1,4 @@
-package com.thuydev.dam.Adapter;
+package com.thuydev.dam.adapter;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -18,8 +18,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.thuydev.dam.DAO.DAO_ThanhVien;
-import com.thuydev.dam.DTO.DTO_ThanhVien;
+import com.thuydev.dam.dao.ThanhVienDAO;
+import com.thuydev.dam.dto.DTO_ThanhVien;
 import com.thuydev.dam.R;
 
 import java.util.List;
@@ -27,12 +27,12 @@ import java.util.List;
 public class Adapter_thanhVien extends RecyclerView.Adapter<Adapter_thanhVien.ViewHolder> {
     Context context;
     List<DTO_ThanhVien> list;
-    DAO_ThanhVien dao_thanhVien;
+    ThanhVienDAO _thanhVienDAO;
 
     public Adapter_thanhVien(Context context, List<DTO_ThanhVien> list) {
         this.context = context;
         this.list = list;
-        dao_thanhVien = new DAO_ThanhVien(context);
+        _thanhVienDAO = new ThanhVienDAO(context);
     }
 
     @NonNull
@@ -93,10 +93,10 @@ public class Adapter_thanhVien extends RecyclerView.Adapter<Adapter_thanhVien.Vi
                     dto_thanhVien.setHoTen(ten.getText().toString().trim());
                     dto_thanhVien.setDiaChi(diaChi.getText().toString().trim());
                     dto_thanhVien.setEmail(email.getText().toString().trim()+"@gmail.com");
-                    if (dao_thanhVien.UpdateThanhNien(dto_thanhVien)>0){
+                    if (_thanhVienDAO.UpdateThanhNien(dto_thanhVien)>0){
                         Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
                         list.clear();
-                        list.addAll(dao_thanhVien.getAll());
+                        list.addAll(_thanhVienDAO.getAll());
                         notifyDataSetChanged();
                         dialog.dismiss();
                     }
@@ -122,10 +122,10 @@ public class Adapter_thanhVien extends RecyclerView.Adapter<Adapter_thanhVien.Vi
         builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if (dao_thanhVien.xoaThanhNien(list.get(p)) > 0) {
+                if (_thanhVienDAO.xoaThanhNien(list.get(p)) > 0) {
                     Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
                     list.clear();
-                    list.addAll(dao_thanhVien.getAll());
+                    list.addAll(_thanhVienDAO.getAll());
                     notifyDataSetChanged();
                     dialog.dismiss();
                 }
