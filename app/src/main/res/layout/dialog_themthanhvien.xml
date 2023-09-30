@@ -21,6 +21,7 @@
         android:text="Thêm thành viên"
         android:textColor="#7E4AD6"
         android:textStyle="bold"
+        android:id="@+id/title_thanhvien"
         android:textSize="32dp"/>
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,89 +45,6 @@
             android:background="@drawable/shape_edt"
             android:paddingLeft="10dp"
             />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="5dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#9D75F2"
-            android:textStyle="bold"
-            android:text="Tên đăng nhập"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Hãy nhập tên đăng nhập"
-            android:id="@+id/edt_tenDangnhap"
-            android:background="@drawable/shape_edt"
-            android:paddingLeft="10dp"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="5dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#9D75F2"
-            android:textStyle="bold"
-            android:text="Mật khẩu"/>
-       <com.google.android.material.textfield.TextInputLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           app:passwordToggleEnabled="true"
-           android:id="@+id/tl_pass"
-           >
-           <EditText
-               android:layout_width="match_parent"
-               android:layout_height="50dp"
-               android:hint="Hãy nhập mật khẩu"
-               android:id="@+id/edt_pass"
-               android:background="@drawable/shape_edt"
-               android:paddingLeft="10dp"
-               />
-       </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="5dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#9D75F2"
-            android:textStyle="bold"
-            android:text="Nhập lại mật khẩu"/>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:passwordToggleEnabled="true"
-            android:id="@+id/tl_repass"
-            >
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="Hãy nhập mật khẩu"
-                android:id="@+id/edt_rePass"
-                android:background="@drawable/shape_edt"
-                android:paddingLeft="10dp"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -165,14 +83,30 @@
             android:textColor="#9D75F2"
             android:textStyle="bold"
             android:text="Email"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Hãy nhập email"
-            android:id="@+id/edt_email"
-            android:background="@drawable/shape_edt"
-            android:paddingLeft="10dp"
-            />
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:background="@drawable/shape_edt"
+           >
+           <EditText
+               android:layout_width="0dp"
+               android:layout_height="50dp"
+               android:layout_weight="1"
+               android:hint="Hãy nhập email"
+               android:id="@+id/edt_email"
+               android:background="@drawable/shape_edt"
+               android:paddingLeft="10dp"
+               />
+           <TextView
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:layout_marginLeft="5dp"
+               android:text="@string/Email"
+               android:textSize="20dp"
+               android:textStyle="bold"
+               />
+       </LinearLayout>
     </LinearLayout>
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="100dp"
@@ -181,6 +115,6 @@
         android:textStyle="bold"
         android:background="@drawable/shape_buton_mo"
         android:textColor="@color/white"
-        android:id="@+id/bnt_add_thanhvien"/>
+        android:id="@+id/btn_add_thanhvien"/>
 </LinearLayout>
 </androidx.cardview.widget.CardView>

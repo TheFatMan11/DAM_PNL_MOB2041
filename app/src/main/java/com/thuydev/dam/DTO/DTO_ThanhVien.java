@@ -6,6 +6,9 @@ public class DTO_ThanhVien {
     private String diaChi;
     private String Email;
 
+    public DTO_ThanhVien() {
+    }
+
     public DTO_ThanhVien(int ID_ThanhVien, String hoTen, String diaChi, String email) {
         this.ID_ThanhVien = ID_ThanhVien;
         this.hoTen = hoTen;

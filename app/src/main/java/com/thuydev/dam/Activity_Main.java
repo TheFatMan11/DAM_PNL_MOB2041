@@ -114,7 +114,7 @@ public class Activity_Main extends AppCompatActivity {
         if(dto_thuTHu!=null){
             ImageView avatar = header.findViewById(R.id.imgUsename);
             TextView tenUser = header.findViewById(R.id.lblUsername);
-            avatar.setImageResource(R.drawable.imguser);
+            avatar.setImageResource(R.drawable.user);
             tenUser.setText(dto_thuTHu.getHoTen());
         }
     }

@@ -17,6 +17,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:hint="Nhập tên loại muốn thêm"
             android:id="@+id/edt_add_loai"/>
         <ImageButton
             android:layout_width="50dp"

@@ -89,7 +89,7 @@ public class Frag_dangnhap extends Fragment {
         if (!tenDangNhap.getText().toString().trim().isEmpty() && !matKhau.getText().toString().trim().isEmpty()) {
             List<DTO_thuTHu> list = dao_thuThu.getNDDangNhap(tenDangNhap.getText().toString().trim(), matKhau.getText().toString().trim());
             if (list.size()>0) {
-                Toast.makeText(getContext(), "Đăng nhạp thành công", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getContext(), Activity_Main.class);
                 dto_thuTHu = list.get(0);
                 intent.putExtra("user",dto_thuTHu);
