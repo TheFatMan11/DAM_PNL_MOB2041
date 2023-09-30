@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +19,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.thuydev.dam.Activity_Main_admin;
+import com.thuydev.dam.Activity_Main;
 import com.thuydev.dam.Activity_QuenPass;
 import com.thuydev.dam.DAO.DAO_ThuThu;
 import com.thuydev.dam.DTO.DTO_thuTHu;
@@ -91,7 +90,7 @@ public class Frag_dangnhap extends Fragment {
             List<DTO_thuTHu> list = dao_thuThu.getNDDangNhap(tenDangNhap.getText().toString().trim(), matKhau.getText().toString().trim());
             if (list.size()>0) {
                 Toast.makeText(getContext(), "Đăng nhạp thành công", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getContext(), Activity_Main_admin.class);
+                Intent intent = new Intent(getContext(), Activity_Main.class);
                 dto_thuTHu = list.get(0);
                 intent.putExtra("user",dto_thuTHu);
                 getActivity().startActivity(intent);

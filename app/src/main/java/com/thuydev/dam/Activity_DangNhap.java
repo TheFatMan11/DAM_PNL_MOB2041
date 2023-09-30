@@ -14,6 +14,11 @@ public class Activity_DangNhap extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_nhap);
+        Loading();
+
+    }
+
+    private void Loading() {
         new Thread(){
             Frag_begin frag_begin;
             Frag_dangnhap frag_dangnhap;

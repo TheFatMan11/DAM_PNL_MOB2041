@@ -28,7 +28,7 @@
             android:name=".Activity_QuenPass"
             android:exported="false" />
         <activity
-            android:name=".Activity_Main_admin"
+            android:name=".Activity_Main"
             android:exported="true"></activity>
     </application>
 

@@ -27,7 +27,6 @@ public class DAO_ThuThu {
         values.put("hoTen",dto_thuTHu.getHoTen());
         values.put("diachi",dto_thuTHu.getDiaChi());
         values.put("email",dto_thuTHu.getEmail());
-
         return db.insert("tb_thuThu",null,values);
     }
 
@@ -35,7 +34,6 @@ public class DAO_ThuThu {
         String [] index = new String[]{
                 String.valueOf(dto_thuTHu.getId_ThuThu())
         };
-
         return db.delete("tb_thuThu","id_thuThu=?",index);
     }
 
@@ -64,7 +62,6 @@ public class DAO_ThuThu {
         return db.update("tb_thuThu",values,"id_thuThu=?",index);
     }
     public List<DTO_thuTHu> getNDDangNhap(String tenTaiKhoan,String MatKhau){
-
         List<DTO_thuTHu> list= new ArrayList<>();
         String [] data = new String[]{
                 tenTaiKhoan,MatKhau
@@ -84,9 +81,7 @@ public class DAO_ThuThu {
         }
         return list;
     }
-
     public List<DTO_thuTHu> getQuenPass(String tenTaiKhoan,String email){
-
         List<DTO_thuTHu> list= new ArrayList<>();
         String [] data = new String[]{
                 tenTaiKhoan,email
@@ -106,7 +101,6 @@ public class DAO_ThuThu {
         }
         return list;
     }
-
     public List<DTO_thuTHu> getAll(){
         List<DTO_thuTHu> list= new ArrayList<>();
         Cursor c = db.rawQuery("select * from tb_thuThu ",null);

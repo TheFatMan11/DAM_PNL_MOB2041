@@ -20,7 +20,6 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.thuydev.dam.DTO.DTO_thuTHu;
-import com.thuydev.dam.Fragment.Frag_doiPass;
 import com.thuydev.dam.Fragment.Frag_muontra;
 import com.thuydev.dam.Fragment.Frag_ql_loaiSach;
 import com.thuydev.dam.Fragment.Frag_ql_sach;
@@ -29,7 +28,7 @@ import com.thuydev.dam.Fragment.Frag_taiKhoan;
 import com.thuydev.dam.Fragment.Frag_thongke;
 import com.thuydev.dam.Fragment.Frag_top10;
 
-public class Activity_Main_admin extends AppCompatActivity {
+public class Activity_Main extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
@@ -47,12 +46,7 @@ public class Activity_Main_admin extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         header =navigationView.getHeaderView(0);
         dto_thuTHu = (DTO_thuTHu) intent.getSerializableExtra("user");
-        if(dto_thuTHu!=null){
-            ImageView avatar = header.findViewById(R.id.imgUsename);
-            TextView tenUser = header.findViewById(R.id.lblUsername);
-            avatar.setImageResource(R.drawable.imguser);
-            tenUser.setText(dto_thuTHu.getHoTen());
-        }
+        showDataOnHeader(dto_thuTHu);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Thống kê");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -97,23 +91,32 @@ public class Activity_Main_admin extends AppCompatActivity {
                        manager.beginTransaction().replace(R.id.Frag_main,new Frag_taiKhoan()).commit();
                        drawerLayout.closeDrawer(GravityCompat.START);
                    }else {
-                       Toast.makeText(Activity_Main_admin.this, "Chức năng này chỉ có Admin được dùng", Toast.LENGTH_SHORT).show();
+                       Toast.makeText(Activity_Main.this, "Chức năng này chỉ có Admin được dùng", Toast.LENGTH_SHORT).show();
                    }
                 } else if (item.getItemId()==R.id.menu_DoiMatKhau) {
                     toolbar.setTitle("Đổi mật khẩu");
-                    Intent intent1 = new Intent(Activity_Main_admin.this, Activity_DoiPass.class);
+                    Intent intent1 = new Intent(Activity_Main.this, Activity_DoiPass.class);
                     intent1.putExtra("user",dto_thuTHu);
                     startActivity(intent1);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 }else if (item.getItemId()==R.id.menu_dangXuat_admin){
                     dangXuat();
                 }else {
-                    Toast.makeText(Activity_Main_admin.this, "Lỗi", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Activity_Main.this, "Lỗi", Toast.LENGTH_SHORT).show();
                 }
                 return false;
             }
         });
 
+    }
+
+    private void showDataOnHeader(DTO_thuTHu dto_thuTHu) {
+        if(dto_thuTHu!=null){
+            ImageView avatar = header.findViewById(R.id.imgUsename);
+            TextView tenUser = header.findViewById(R.id.lblUsername);
+            avatar.setImageResource(R.drawable.imguser);
+            tenUser.setText(dto_thuTHu.getHoTen());
+        }
     }
 
     private void dangXuat() {

@@ -7,16 +7,15 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.thuydev.dam.DATABASE.DB_PNL;
 import com.thuydev.dam.DTO.DTO_ThanhVien;
-import com.thuydev.dam.DTO.DTO_thuTHu;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DAO_ThanhNien {
+public class DAO_ThanhVien {
     SQLiteDatabase db;
     DB_PNL db_pnl;
 
-    public DAO_ThanhNien(Context context){
+    public DAO_ThanhVien(Context context){
         db_pnl = new DB_PNL(context);
         db = db_pnl.getWritableDatabase();
     }

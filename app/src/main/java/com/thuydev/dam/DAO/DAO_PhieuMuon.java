@@ -41,6 +41,22 @@ public class DAO_PhieuMuon {
         return db.delete("tb_phieuMuon", "sophieu=?", index);
     }
 
+    public int updatePhieuMuon(DTO_PhieuMuon dto_phieuMuon){
+        ContentValues values = new ContentValues();
+        values.put("id_thanhvien", dto_phieuMuon.getID_ThanhVien());
+        values.put("id_thuThu", dto_phieuMuon.getID_ThuTHu());
+        values.put("id_sach", dto_phieuMuon.getID_Sach());
+        values.put("ngayMuon", dto_phieuMuon.getNgayMuon());
+        values.put("ngayTra", dto_phieuMuon.getNgayTra());
+        values.put("trangThai", dto_phieuMuon.getTrangThai());
+
+        String[] index = new String[]{
+                String.valueOf(dto_phieuMuon.getSoPhieu())
+        };
+
+        return db.update("tb_phieuMuon",values,"sophieu=?",index);
+    }
+
     public List<DTO_PhieuMuon> getAll() {
         List<DTO_PhieuMuon> list = new ArrayList<>();
         Cursor c = db.rawQuery("select * from tb_phieuMuon", null);
