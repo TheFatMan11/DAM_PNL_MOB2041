@@ -36,8 +36,6 @@ public class Adapter_LoaiSach extends RecyclerView.Adapter<Adapter_LoaiSach.View
     EditText editText;
     ImageButton imageButton,soSanh;
     int swichEDT = 0;
-
-
     public Adapter_LoaiSach(Context context, List<DTO_LoaiSach> list) {
         this.context = context;
         this.list = list;
@@ -45,7 +43,6 @@ public class Adapter_LoaiSach extends RecyclerView.Adapter<Adapter_LoaiSach.View
         soSanh = new ImageButton(context);
         soSanh.setBackgroundResource(R.drawable.loop);
     }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -53,7 +50,6 @@ public class Adapter_LoaiSach extends RecyclerView.Adapter<Adapter_LoaiSach.View
         View view = inflater.inflate(R.layout.item_loaisach, parent, false);
         return new ViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.ten.setText(list.get(position).getTenLoai());
@@ -75,23 +71,30 @@ public class Adapter_LoaiSach extends RecyclerView.Adapter<Adapter_LoaiSach.View
 
     private void xoaVacapnhap(int p) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Vui lòng chọn");
-        builder.setIcon(R.drawable.info);
-        String[] item = new String[]{
-                "Cập nhập tên loại", "Xóa loại"
-        };
-        builder.setItems(item, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (which == 0) {
-                    capNhapLoai(p);
-                } else {
-                    xoaLoai(p);
-                }
-            }
-        });
+       LayoutInflater inflater = ((Activity)context).getLayoutInflater();
+       View view = inflater.inflate(R.layout.dialog_more2,null,false);
+       builder.setView(view);
         Dialog dialog = builder.create();
         dialog.show();
+
+        Button sua,xoa;
+        sua = view.findViewById(R.id.btn_suaLoaiSach);
+        xoa = view.findViewById(R.id.btn_xoaLoaiSach);
+
+        sua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                capNhapLoai(p);
+                dialog.dismiss();
+            }
+        });
+        xoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                xoaLoai(p);
+                dialog.dismiss();
+            }
+        });
 
     }
 
