@@ -1,13 +1,13 @@
-package com.thuydev.dam.dto;
+package com.thuydev.dam.model;
 
-public class DTO_LoaiSach {
+public class LoaiSach {
     private int ID_LoaiSach;
     private String TenLoai;
 
-    public DTO_LoaiSach() {
+    public LoaiSach() {
     }
 
-    public DTO_LoaiSach(int ID_LoaiSach, String tenLoai) {
+    public LoaiSach(int ID_LoaiSach, String tenLoai) {
         this.ID_LoaiSach = ID_LoaiSach;
         TenLoai = tenLoai;
     }

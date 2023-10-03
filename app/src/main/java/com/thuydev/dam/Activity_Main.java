@@ -19,7 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
-import com.thuydev.dam.dto.DTO_thuTHu;
+import com.thuydev.dam.model.thuTHu;
 import com.thuydev.dam.fragment.Frag_muontra;
 import com.thuydev.dam.fragment.Frag_ql_loaiSach;
 import com.thuydev.dam.fragment.Frag_ql_sach;
@@ -33,7 +33,7 @@ public class Activity_Main extends AppCompatActivity {
     NavigationView navigationView;
     Toolbar toolbar;
     View header;
-    DTO_thuTHu dto_thuTHu;
+    thuTHu _thuTHu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +45,8 @@ public class Activity_Main extends AppCompatActivity {
         navigationView = findViewById(R.id.navigationView);
         toolbar = findViewById(R.id.toolbar);
         header =navigationView.getHeaderView(0);
-        dto_thuTHu = (DTO_thuTHu) intent.getSerializableExtra("user");
-        showDataOnHeader(dto_thuTHu);
+        _thuTHu = (thuTHu) intent.getSerializableExtra("user");
+        showDataOnHeader(_thuTHu);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Thống kê");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -86,7 +86,7 @@ public class Activity_Main extends AppCompatActivity {
                     manager.beginTransaction().replace(R.id.Frag_main,new Frag_top10()).commit();
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (item.getItemId()==R.id.menu_QuanLyTaiKhoan) {
-                   if(dto_thuTHu.getChucVu()==1){
+                   if(_thuTHu.getChucVu()==1){
                        toolbar.setTitle("Quản lý tài khoản");
                        manager.beginTransaction().replace(R.id.Frag_main,new Frag_taiKhoan()).commit();
                        drawerLayout.closeDrawer(GravityCompat.START);
@@ -96,7 +96,7 @@ public class Activity_Main extends AppCompatActivity {
                 } else if (item.getItemId()==R.id.menu_DoiMatKhau) {
                     toolbar.setTitle("Đổi mật khẩu");
                     Intent intent1 = new Intent(Activity_Main.this, Activity_DoiPass.class);
-                    intent1.putExtra("user",dto_thuTHu);
+                    intent1.putExtra("user", _thuTHu);
                     startActivity(intent1);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 }else if (item.getItemId()==R.id.menu_dangXuat_admin){
@@ -110,12 +110,12 @@ public class Activity_Main extends AppCompatActivity {
 
     }
 
-    private void showDataOnHeader(DTO_thuTHu dto_thuTHu) {
-        if(dto_thuTHu!=null){
+    private void showDataOnHeader(thuTHu _thuTHu) {
+        if(_thuTHu !=null){
             ImageView avatar = header.findViewById(R.id.imgUsename);
             TextView tenUser = header.findViewById(R.id.lblUsername);
             avatar.setImageResource(R.drawable.user);
-            tenUser.setText(dto_thuTHu.getHoTen());
+            tenUser.setText(_thuTHu.getHoTen());
         }
     }
 

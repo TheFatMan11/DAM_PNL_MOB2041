@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.thuydev.dam.database.Dbhelper;
-import com.thuydev.dam.dto.DTO_ThanhVien;
+import com.thuydev.dam.model.ThanhVien;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,42 +20,42 @@ public class ThanhVienDAO {
         db = dbhelper.getWritableDatabase();
     }
 
-    public long addThanhNien(DTO_ThanhVien dto_thanhVien){
+    public long addThanhNien(ThanhVien _thanhVien){
         ContentValues values = new ContentValues();
-        values.put("hoten",dto_thanhVien.getHoTen());
-        values.put("diachi",dto_thanhVien.getDiaChi());
-        values.put("email",dto_thanhVien.getEmail());
+        values.put("hoten", _thanhVien.getHoTen());
+        values.put("diachi", _thanhVien.getDiaChi());
+        values.put("email", _thanhVien.getEmail());
         return db.insert("tb_thanhVien",null,values);
     }
 
-    public int xoaThanhNien(DTO_ThanhVien dto_thanhVien){
+    public int xoaThanhNien(ThanhVien _thanhVien){
         String [] index = new String[]{
-                String.valueOf(dto_thanhVien.getID_ThanhVien())
+                String.valueOf(_thanhVien.getID_ThanhVien())
         };
 
         return db.delete("tb_thanhVien","id_thanhvien=?",index);
     }
 
-    public int UpdateThanhNien(DTO_ThanhVien dto_thanhVien){
+    public int UpdateThanhNien(ThanhVien _thanhVien){
         ContentValues values = new ContentValues();
-        values.put("hoten",dto_thanhVien.getHoTen());
-        values.put("diachi",dto_thanhVien.getDiaChi());
-        values.put("email",dto_thanhVien.getEmail());
+        values.put("hoten", _thanhVien.getHoTen());
+        values.put("diachi", _thanhVien.getDiaChi());
+        values.put("email", _thanhVien.getEmail());
 
         String [] index = new String[]{
-                String.valueOf(dto_thanhVien.getID_ThanhVien())
+                String.valueOf(_thanhVien.getID_ThanhVien())
         };
 
         return db.update("tb_thanhVien",values,"id_thanhvien=?",index);
     }
 
-    public List<DTO_ThanhVien> getAll(){
-        List<DTO_ThanhVien> list = new ArrayList<>();
+    public List<ThanhVien> getAll(){
+        List<ThanhVien> list = new ArrayList<>();
         Cursor c = db.rawQuery("select * from tb_thanhVien",null);
         if(c!=null&&c.getCount()>0){
             c.moveToFirst();
             do {
-                DTO_ThanhVien a = new DTO_ThanhVien(c.getInt(0),c.getString(1),c.getString(2),c.getString(3));
+                ThanhVien a = new ThanhVien(c.getInt(0),c.getString(1),c.getString(2),c.getString(3));
                 list.add(a);
             }while (c.moveToNext());
         }

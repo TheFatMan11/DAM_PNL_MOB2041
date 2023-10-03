@@ -1,9 +1,9 @@
-package com.thuydev.dam.dto;
+package com.thuydev.dam.model;
 
 import java.io.Serializable;
 
-public class DTO_thuTHu implements Serializable {
-    private int Id_ThuThu;
+public class thuTHu implements Serializable {
+
     private String tenNguoiDung;
     private String maKhau;
     private String hoTen;
@@ -11,11 +11,11 @@ public class DTO_thuTHu implements Serializable {
     private String Email;
     private int chucVu;
 
-    public DTO_thuTHu() {
+    public thuTHu() {
     }
 
-    public DTO_thuTHu(int id_ThuThu, String tenNguoiDung, String maKhau, String hoTen, String diaChi, String email, int chucVu) {
-        Id_ThuThu = id_ThuThu;
+    public thuTHu(String tenNguoiDung, String maKhau, String hoTen, String diaChi, String email, int chucVu) {
+
         this.tenNguoiDung = tenNguoiDung;
         this.maKhau = maKhau;
         this.hoTen = hoTen;
@@ -24,8 +24,7 @@ public class DTO_thuTHu implements Serializable {
         this.chucVu = chucVu;
     }
 
-    public DTO_thuTHu(int id_ThuThu, String tenNguoiDung, String maKhau, String hoTen, String diaChi, String email) {
-        Id_ThuThu = id_ThuThu;
+    public thuTHu(String tenNguoiDung, String maKhau, String hoTen, String diaChi, String email) {
         this.tenNguoiDung = tenNguoiDung;
         this.maKhau = maKhau;
         this.hoTen = hoTen;
@@ -33,13 +32,6 @@ public class DTO_thuTHu implements Serializable {
         Email = email;
     }
 
-    public int getId_ThuThu() {
-        return Id_ThuThu;
-    }
-
-    public void setId_ThuThu(int id_ThuThu) {
-        Id_ThuThu = id_ThuThu;
-    }
 
     public String getTenNguoiDung() {
         return tenNguoiDung;

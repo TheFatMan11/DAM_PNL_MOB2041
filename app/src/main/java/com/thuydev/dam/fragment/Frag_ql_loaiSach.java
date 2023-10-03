@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.thuydev.dam.adapter.Adapter_LoaiSach;
 import com.thuydev.dam.dao.LoaiSachDAO;
-import com.thuydev.dam.dto.DTO_LoaiSach;
+import com.thuydev.dam.model.LoaiSach;
 import com.thuydev.dam.R;
 
 import java.util.List;
@@ -27,7 +27,7 @@ public class Frag_ql_loaiSach extends Fragment {
     ImageButton add;
     int swichEDT = 0;
     Adapter_LoaiSach adapter_loaiSach;
-    List<DTO_LoaiSach> list;
+    List<LoaiSach> list;
     LoaiSachDAO _loaiSachDAO;
     @Nullable
     @Override
@@ -74,9 +74,9 @@ public class Frag_ql_loaiSach extends Fragment {
     }
 
     private void addLoai() {
-        DTO_LoaiSach dto_loaiSach = new DTO_LoaiSach();
-        dto_loaiSach.setTenLoai(editText.getText().toString().trim());
-        if(_loaiSachDAO.addLoaiSach(dto_loaiSach)>0){
+        LoaiSach _loaiSach = new LoaiSach();
+        _loaiSach.setTenLoai(editText.getText().toString().trim());
+        if(_loaiSachDAO.addLoaiSach(_loaiSach)>0){
             Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
             list.clear();
             list.addAll(_loaiSachDAO.getAll());

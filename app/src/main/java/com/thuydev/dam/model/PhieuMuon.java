@@ -1,6 +1,6 @@
-package com.thuydev.dam.dto;
+package com.thuydev.dam.model;
 
-public class DTO_PhieuMuon {
+public class PhieuMuon {
     private int soPhieu;
     private int ID_ThuTHu;
     private int ID_ThanhVien;
@@ -47,10 +47,10 @@ public class DTO_PhieuMuon {
         this.ngayXuatBan = ngayXuatBan;
     }
 
-    public DTO_PhieuMuon() {
+    public PhieuMuon() {
     }
 
-    public DTO_PhieuMuon(int soPhieu, int ID_ThuTHu, int ID_ThanhVien, int ID_Sach, String ngayMuon, String ngayTra, int trangThai) {
+    public PhieuMuon(int soPhieu, int ID_ThuTHu, int ID_ThanhVien, int ID_Sach, String ngayMuon, String ngayTra, int trangThai) {
         this.soPhieu = soPhieu;
         this.ID_ThuTHu = ID_ThuTHu;
         this.ID_ThanhVien = ID_ThanhVien;
@@ -60,7 +60,7 @@ public class DTO_PhieuMuon {
         this.trangThai = trangThai;
     }
 
-    public DTO_PhieuMuon(int soPhieu, int ID_ThuTHu, int ID_ThanhVien, int ID_Sach, String ngayMuon, String ngayTra, int trangThai, int gia) {
+    public PhieuMuon(int soPhieu, int ID_ThuTHu, int ID_ThanhVien, int ID_Sach, String ngayMuon, String ngayTra, int trangThai, int gia) {
         this.soPhieu = soPhieu;
         this.ID_ThuTHu = ID_ThuTHu;
         this.ID_ThanhVien = ID_ThanhVien;

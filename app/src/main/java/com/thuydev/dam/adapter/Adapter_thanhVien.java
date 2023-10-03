@@ -19,17 +19,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.thuydev.dam.dao.ThanhVienDAO;
-import com.thuydev.dam.dto.DTO_ThanhVien;
+import com.thuydev.dam.model.ThanhVien;
 import com.thuydev.dam.R;
 
 import java.util.List;
 
 public class Adapter_thanhVien extends RecyclerView.Adapter<Adapter_thanhVien.ViewHolder> {
     Context context;
-    List<DTO_ThanhVien> list;
+    List<ThanhVien> list;
     ThanhVienDAO _thanhVienDAO;
 
-    public Adapter_thanhVien(Context context, List<DTO_ThanhVien> list) {
+    public Adapter_thanhVien(Context context, List<ThanhVien> list) {
         this.context = context;
         this.list = list;
         _thanhVienDAO = new ThanhVienDAO(context);
@@ -82,18 +82,18 @@ public class Adapter_thanhVien extends RecyclerView.Adapter<Adapter_thanhVien.Vi
         title = view.findViewById(R.id.title_thanhvien);
         title.setText("Sửa thành viên");
         sua.setText("Sửa");
-        DTO_ThanhVien dto_thanhVien =list.get(p);
-        ten.setText(dto_thanhVien.getHoTen());
-        diaChi.setText(dto_thanhVien.getDiaChi());
+        ThanhVien _thanhVien =list.get(p);
+        ten.setText(_thanhVien.getHoTen());
+        diaChi.setText(_thanhVien.getDiaChi());
         email.setText(catChuoi(p));
         sua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!ten.getText().toString().isEmpty()&&!diaChi.getText().toString().isEmpty()&&!email.getText().toString().isEmpty()){
-                    dto_thanhVien.setHoTen(ten.getText().toString().trim());
-                    dto_thanhVien.setDiaChi(diaChi.getText().toString().trim());
-                    dto_thanhVien.setEmail(email.getText().toString().trim()+"@gmail.com");
-                    if (_thanhVienDAO.UpdateThanhNien(dto_thanhVien)>0){
+                    _thanhVien.setHoTen(ten.getText().toString().trim());
+                    _thanhVien.setDiaChi(diaChi.getText().toString().trim());
+                    _thanhVien.setEmail(email.getText().toString().trim()+"@gmail.com");
+                    if (_thanhVienDAO.UpdateThanhNien(_thanhVien)>0){
                         Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
                         list.clear();
                         list.addAll(_thanhVienDAO.getAll());

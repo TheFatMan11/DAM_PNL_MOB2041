@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.textfield.TextInputLayout;
 import com.thuydev.dam.adapter.Adapter_nguoiDung;
 import com.thuydev.dam.dao.ThuThuDAO;
-import com.thuydev.dam.dto.DTO_thuTHu;
+import com.thuydev.dam.model.thuTHu;
 import com.thuydev.dam.R;
 
 import java.util.List;
@@ -30,7 +30,7 @@ public class Frag_taiKhoan extends Fragment {
     ImageButton add;
     ThuThuDAO _thuThuDAO;
     Adapter_nguoiDung adapter_nguoiDung;
-    List<DTO_thuTHu> list;
+    List<thuTHu> list;
 
     @Nullable
     @Override
@@ -86,13 +86,13 @@ public class Frag_taiKhoan extends Fragment {
             public void onClick(View v) {
                 if (!hoTen.getText().toString().isEmpty() && !tenDangNhap.getText().toString().isEmpty() && !matKhau.getText().toString().isEmpty() && !reMaKhau.getText().toString().isEmpty() && !diaChi.getText().toString().isEmpty() && !Email.getText().toString().isEmpty()) {
                     if (matKhau.getText().toString().trim().equals(reMaKhau.getText().toString().trim())) {
-                        DTO_thuTHu dto_thuTHu = new DTO_thuTHu();
-                        dto_thuTHu.setHoTen(hoTen.getText().toString().trim());
-                        dto_thuTHu.setTenNguoiDung(tenDangNhap.getText().toString().trim());
-                        dto_thuTHu.setMaKhau(matKhau.getText().toString().trim());
-                        dto_thuTHu.setDiaChi(diaChi.getText().toString().trim());
-                        dto_thuTHu.setEmail(Email.getText().toString().trim()+"@gmail.com");
-                        if (_thuThuDAO.addThuThu(dto_thuTHu) > 0) {
+                        thuTHu _thuTHu = new thuTHu();
+                        _thuTHu.setHoTen(hoTen.getText().toString().trim());
+                        _thuTHu.setTenNguoiDung(tenDangNhap.getText().toString().trim());
+                        _thuTHu.setMaKhau(matKhau.getText().toString().trim());
+                        _thuTHu.setDiaChi(diaChi.getText().toString().trim());
+                        _thuTHu.setEmail(Email.getText().toString().trim()+"@gmail.com");
+                        if (_thuThuDAO.addThuThu(_thuTHu) > 0) {
                             Toast.makeText(getContext(), "Thêm thành công ", Toast.LENGTH_SHORT).show();
                             list.clear();
                             list.addAll(_thuThuDAO.getAll());

@@ -17,7 +17,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.thuydev.dam.Activity_DoiPass;
 import com.thuydev.dam.Activity_QuenPass;
 import com.thuydev.dam.dao.ThuThuDAO;
-import com.thuydev.dam.dto.DTO_thuTHu;
+import com.thuydev.dam.model.thuTHu;
 import com.thuydev.dam.R;
 
 public class Frag_doiPass extends Fragment {
@@ -25,7 +25,7 @@ public class Frag_doiPass extends Fragment {
     TextInputLayout thongBao_Mk,thongBao_reMk;
     TextInputEditText matKhau,ReMaktKhau;
     Button doiPass;
-    DTO_thuTHu dto_thuTHu;
+    thuTHu _thuTHu;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -52,17 +52,17 @@ public class Frag_doiPass extends Fragment {
             if(matKhau.getText().toString().trim().equals(ReMaktKhau.getText().toString())){
                try {
                    Activity_QuenPass activity_quenPass = (Activity_QuenPass) getActivity();
-                   dto_thuTHu = activity_quenPass.returnData();
-                   dto_thuTHu.setMaKhau(matKhau.getText().toString().trim());
-                   if(_thuThuDAO.updatePass(dto_thuTHu)>0){
+                   _thuTHu = activity_quenPass.returnData();
+                   _thuTHu.setMaKhau(matKhau.getText().toString().trim());
+                   if(_thuThuDAO.updatePass(_thuTHu)>0){
                        Toast.makeText(activity_quenPass, "Đổi thành oông", Toast.LENGTH_SHORT).show();
                        getActivity().finish();
                    }
                }catch (Exception e) {
                    Activity_DoiPass activity_quenPass = (Activity_DoiPass) getActivity();
-                   dto_thuTHu = activity_quenPass.returnData();
-                   dto_thuTHu.setMaKhau(matKhau.getText().toString().trim());
-                   if (_thuThuDAO.updatePass(dto_thuTHu) > 0) {
+                   _thuTHu = activity_quenPass.returnData();
+                   _thuTHu.setMaKhau(matKhau.getText().toString().trim());
+                   if (_thuThuDAO.updatePass(_thuTHu) > 0) {
                        Toast.makeText(activity_quenPass, "Đổi thành oông", Toast.LENGTH_SHORT).show();
                        activity_quenPass.finish();
                    }

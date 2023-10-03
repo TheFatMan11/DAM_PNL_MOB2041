@@ -15,7 +15,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.thuydev.dam.Activity_QuenPass;
 import com.thuydev.dam.dao.ThuThuDAO;
-import com.thuydev.dam.dto.DTO_thuTHu;
+import com.thuydev.dam.model.thuTHu;
 import com.thuydev.dam.R;
 
 import java.util.List;
@@ -24,7 +24,7 @@ public class Frag_QuenPass extends Fragment {
     Button xacThuc ;
     TextInputEditText tenDangNhap,Email;
     TextInputLayout thongBaoEmail,thongBaoTen;
-    DTO_thuTHu dto_thuTHu ;
+    thuTHu _thuTHu;
 
     @Nullable
     @Override
@@ -52,13 +52,13 @@ public class Frag_QuenPass extends Fragment {
     private void CheckData() {
         if(!tenDangNhap.getText().toString().trim().isEmpty()&&!Email.getText().toString().trim().isEmpty()){
             ThuThuDAO _thuThuDAO = new ThuThuDAO(getContext());
-            List<DTO_thuTHu> list = _thuThuDAO.getQuenPass(tenDangNhap.getText().toString().trim(),Email.getText().toString().trim());
+            List<thuTHu> list = _thuThuDAO.getQuenPass(tenDangNhap.getText().toString().trim(),Email.getText().toString().trim());
             if(list.size()>0){
                 Frag_doiPass frag_doiPass = new Frag_doiPass();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.Frag_quenPass,frag_doiPass).commit();
-                dto_thuTHu = list.get(0);
+                _thuTHu = list.get(0);
                 Activity_QuenPass activity_quenPass = (Activity_QuenPass) getActivity();
-                activity_quenPass.getData(dto_thuTHu);
+                activity_quenPass.getData(_thuTHu);
             }else {
                 thongBaoTen.setError("Tên hoặc email không đúng");
                 thongBaoEmail.setError("Tên hoặc email không đúng");

@@ -20,17 +20,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.thuydev.dam.dao.ThuThuDAO;
-import com.thuydev.dam.dto.DTO_thuTHu;
+import com.thuydev.dam.model.thuTHu;
 import com.thuydev.dam.R;
 
 import java.util.List;
 
 public class Adapter_nguoiDung extends RecyclerView.Adapter<Adapter_nguoiDung.ViewHolder> {
     Context context;
-    List<DTO_thuTHu> list;
+    List<thuTHu> list;
     ThuThuDAO _thuThuDAO;
 
-    public Adapter_nguoiDung(Context context, List<DTO_thuTHu> list) {
+    public Adapter_nguoiDung(Context context, List<thuTHu> list) {
         this.context = context;
         this.list = list;
         _thuThuDAO = new ThuThuDAO(context);
@@ -97,11 +97,11 @@ public class Adapter_nguoiDung extends RecyclerView.Adapter<Adapter_nguoiDung.Vi
             @Override
             public void onClick(View v) {
                 if (!hoTen.getText().toString().isEmpty() && !diaChi.getText().toString().isEmpty() && !Email.getText().toString().isEmpty()) {
-                        DTO_thuTHu dto_thuTHu = list.get(p);
-                        dto_thuTHu.setHoTen(hoTen.getText().toString().trim());
-                        dto_thuTHu.setDiaChi(diaChi.getText().toString().trim());
-                        dto_thuTHu.setEmail(Email.getText().toString().trim()+"@gmail.com");
-                        if (_thuThuDAO.update(dto_thuTHu) > 0) {
+                        thuTHu _thuTHu = list.get(p);
+                        _thuTHu.setHoTen(hoTen.getText().toString().trim());
+                        _thuTHu.setDiaChi(diaChi.getText().toString().trim());
+                        _thuTHu.setEmail(Email.getText().toString().trim()+"@gmail.com");
+                        if (_thuThuDAO.update(_thuTHu) > 0) {
                             Toast.makeText(context, "Sửa thành công ", Toast.LENGTH_SHORT).show();
                             list.clear();
                             list.addAll(_thuThuDAO.getAll());

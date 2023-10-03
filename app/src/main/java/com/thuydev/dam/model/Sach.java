@@ -1,6 +1,6 @@
-package com.thuydev.dam.dto;
+package com.thuydev.dam.model;
 
-public class DTO_Sach {
+public class Sach {
     private int ID_Sach;
     private int ID_Loai;
     private String tacGia;
@@ -8,7 +8,7 @@ public class DTO_Sach {
     private String ngayXuatBan;
     private int gia;
 
-    public DTO_Sach(int ID_Sach, int ID_Loai, String tacGia, String tenSach, String ngayXuatBan, int gia) {
+    public Sach(int ID_Sach, int ID_Loai, String tacGia, String tenSach, String ngayXuatBan, int gia) {
         this.ID_Sach = ID_Sach;
         this.ID_Loai = ID_Loai;
         this.tacGia = tacGia;

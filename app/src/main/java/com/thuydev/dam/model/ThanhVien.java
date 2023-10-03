@@ -1,15 +1,15 @@
-package com.thuydev.dam.dto;
+package com.thuydev.dam.model;
 
-public class DTO_ThanhVien {
+public class ThanhVien {
     private int ID_ThanhVien;
     private String hoTen;
     private String diaChi;
     private String Email;
 
-    public DTO_ThanhVien() {
+    public ThanhVien() {
     }
 
-    public DTO_ThanhVien(int ID_ThanhVien, String hoTen, String diaChi, String email) {
+    public ThanhVien(int ID_ThanhVien, String hoTen, String diaChi, String email) {
         this.ID_ThanhVien = ID_ThanhVien;
         this.hoTen = hoTen;
         this.diaChi = diaChi;

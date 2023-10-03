@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.thuydev.dam.adapter.Adapter_thanhVien;
 import com.thuydev.dam.dao.ThanhVienDAO;
-import com.thuydev.dam.dto.DTO_ThanhVien;
+import com.thuydev.dam.model.ThanhVien;
 import com.thuydev.dam.R;
 
 import java.util.List;
@@ -28,7 +28,7 @@ import java.util.List;
 public class Frag_ql_thanhvien extends Fragment {
     RecyclerView rc_list;
     ImageButton addThanhvien;
-    List<DTO_ThanhVien>list;
+    List<ThanhVien>list;
     Adapter_thanhVien adapter_thanhVien;
     ThanhVienDAO _thanhVienDAO;
     @Nullable
@@ -75,16 +75,18 @@ public class Frag_ql_thanhvien extends Fragment {
             @Override
             public void onClick(View v) {
                 if(!ten.getText().toString().isEmpty()&&!diaChi.getText().toString().isEmpty()&&!email.getText().toString().isEmpty()){
-                    DTO_ThanhVien dto_thanhVien = new DTO_ThanhVien();
-                    dto_thanhVien.setHoTen(ten.getText().toString().trim());
-                    dto_thanhVien.setDiaChi(diaChi.getText().toString().trim());
-                    dto_thanhVien.setEmail(email.getText().toString().trim()+"@gmail.com");
-                    if (_thanhVienDAO.addThanhNien(dto_thanhVien)>0){
+                    ThanhVien _thanhVien = new ThanhVien();
+                    _thanhVien.setHoTen(ten.getText().toString().trim());
+                    _thanhVien.setDiaChi(diaChi.getText().toString().trim());
+                    _thanhVien.setEmail(email.getText().toString().trim()+"@gmail.com");
+                    if (_thanhVienDAO.addThanhNien(_thanhVien)>0){
                         Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
                         list.clear();
                         list.addAll(_thanhVienDAO.getAll());
                         adapter_thanhVien.notifyDataSetChanged();
                         dialog.dismiss();
+                    }else {
+                        Toast.makeText(getContext(), "Email của bạn đã tồn tại vui lòng dùng email khác", Toast.LENGTH_SHORT).show();
                     }
                 }else {
                     Toast.makeText(getContext(), "Không được để trống", Toast.LENGTH_SHORT).show();

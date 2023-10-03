@@ -22,7 +22,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.thuydev.dam.Activity_Main;
 import com.thuydev.dam.Activity_QuenPass;
 import com.thuydev.dam.dao.ThuThuDAO;
-import com.thuydev.dam.dto.DTO_thuTHu;
+import com.thuydev.dam.model.thuTHu;
 import com.thuydev.dam.R;
 
 import java.util.List;
@@ -34,7 +34,7 @@ public class Frag_dangnhap extends Fragment {
     TextView quenPass;
     CheckBox luu;
     ThuThuDAO _thuThuDAO;
-    DTO_thuTHu dto_thuTHu;
+    thuTHu _thuTHu;
     SharedPreferences sharedPreferences;
 
     @Nullable
@@ -87,12 +87,12 @@ public class Frag_dangnhap extends Fragment {
 
     private void dangNhapMain() {
         if (!tenDangNhap.getText().toString().trim().isEmpty() && !matKhau.getText().toString().trim().isEmpty()) {
-            List<DTO_thuTHu> list = _thuThuDAO.getNDDangNhap(tenDangNhap.getText().toString().trim(), matKhau.getText().toString().trim());
+            List<thuTHu> list = _thuThuDAO.getNDDangNhap(tenDangNhap.getText().toString().trim(), matKhau.getText().toString().trim());
             if (list.size()>0) {
                 Toast.makeText(getContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getContext(), Activity_Main.class);
-                dto_thuTHu = list.get(0);
-                intent.putExtra("user",dto_thuTHu);
+                _thuTHu = list.get(0);
+                intent.putExtra("user", _thuTHu);
                 getActivity().startActivity(intent);
                 luuPass();
             } else {
