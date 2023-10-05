@@ -93,6 +93,13 @@ public class Adapter_nguoiDung extends RecyclerView.Adapter<Adapter_nguoiDung.Vi
         hoTen.setText(list.get(p).getHoTen());
         diaChi.setText(list.get(p).getDiaChi());
         Email.setText(catChuoi(p));
+        Button Huy = view.findViewById(R.id.btn_Huy_nguoidung);
+        Huy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
         capNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

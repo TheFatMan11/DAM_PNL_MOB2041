@@ -146,6 +146,14 @@ public class Adapter_Sach extends RecyclerView.Adapter<Adapter_Sach.viewHoder> {
         gia = view.findViewById(R.id.edt_gia);
         spinner = view.findViewById(R.id.sp_loaiSach);
         sua = view.findViewById(R.id.btn_add_sach);
+
+        Button Huy = view.findViewById(R.id.btn_Huy_sach);
+        Huy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
         LoaiSachDAO loaiSachDAO = new LoaiSachDAO(context);
         List<LoaiSach> loaiSachList = loaiSachDAO.getAll();
         Adapter_theLoai adapter_theLoai = new Adapter_theLoai(context, loaiSachList);

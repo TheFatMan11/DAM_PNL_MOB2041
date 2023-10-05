@@ -80,6 +80,13 @@ public class Frag_taiKhoan extends Fragment {
         ThongBao_matKhau = view.findViewById(R.id.tl_pass_nd);
         ThongBao_reMatKhau = view.findViewById(R.id.tl_repass_nd);
         them = view.findViewById(R.id.btn_add_nguoidung);
+        Button Huy = view.findViewById(R.id.btn_Huy_nguoidung);
+        Huy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
 
         them.setOnClickListener(new View.OnClickListener() {
             @Override

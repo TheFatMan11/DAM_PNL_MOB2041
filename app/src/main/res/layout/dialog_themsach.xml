@@ -142,14 +142,28 @@
             android:scrollbarStyle="insideOverlay"
             android:id="@+id/sp_loaiSach"/>
     </LinearLayout>
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="100dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Thêm"
+        android:gravity="center">
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Thêm"
 
-        android:textStyle="bold"
-        android:background="@drawable/shape_buton_mo"
-        android:textColor="@color/white"
-        android:id="@+id/btn_add_sach"/>
+            android:textStyle="bold"
+            android:background="@drawable/shape_buton_mo"
+            android:textColor="@color/white"
+            android:id="@+id/btn_add_sach"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Hủy"
+            android:textStyle="bold"
+            android:background="@drawable/shape_buton_huy"
+            android:textColor="@color/white"
+            android:layout_marginLeft="30dp"
+            android:id="@+id/btn_Huy_sach"/>
+    </LinearLayout>
 </LinearLayout>
 </androidx.cardview.widget.CardView>

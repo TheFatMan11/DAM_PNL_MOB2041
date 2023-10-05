@@ -141,4 +141,8 @@ public class Activity_Main extends AppCompatActivity {
         dialog.show();
     }
 
+    public thuTHu GuiThuThu(){
+        return _thuTHu;
+    }
+
 }

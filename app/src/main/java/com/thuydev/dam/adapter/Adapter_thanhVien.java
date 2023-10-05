@@ -80,6 +80,13 @@ public class Adapter_thanhVien extends RecyclerView.Adapter<Adapter_thanhVien.Vi
         email = view.findViewById(R.id.edt_email);
         sua = view.findViewById(R.id.btn_add_thanhvien);
         title = view.findViewById(R.id.title_thanhvien);
+        Button Huy = view.findViewById(R.id.btn_Huy_thanhvien);
+        Huy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
         title.setText("Sửa thành viên");
         sua.setText("Sửa");
         ThanhVien _thanhVien =list.get(p);

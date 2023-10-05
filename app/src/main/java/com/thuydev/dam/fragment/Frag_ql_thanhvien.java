@@ -71,6 +71,13 @@ public class Frag_ql_thanhvien extends Fragment {
         diaChi = view.findViewById(R.id.edt_diaChi);
         email = view.findViewById(R.id.edt_email);
         them = view.findViewById(R.id.btn_add_thanhvien);
+        Button Huy = view.findViewById(R.id.btn_Huy_thanhvien);
+        Huy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
         them.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

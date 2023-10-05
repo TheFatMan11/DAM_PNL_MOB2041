@@ -27,7 +27,6 @@ public class PhieuMuonDAO {
         values.put("id_sach", _phieuMuon.getID_Sach());
         values.put("ngayMuon", _phieuMuon.getNgayMuon());
         values.put("ngayTra", _phieuMuon.getNgayTra());
-        values.put("trangThai", _phieuMuon.getTrangThai());
 
         return db.insert("tb_phieuMuon", null, values);
     }
@@ -58,12 +57,12 @@ public class PhieuMuonDAO {
 
     public List<PhieuMuon> getAll() {
         List<PhieuMuon> list = new ArrayList<>();
-        Cursor c = db.rawQuery("select * from tb_phieuMuon", null);
+        Cursor c = db.rawQuery("select * from tb_phieuMuon a INNER JOIN tb_sach b on a.id_sach = b.id_sach INNER JOIN tb_loaiSach c on b.id_tenLoai = c.id_loaiSach INNER JOIN tb_thanhVien d on a.id_thanhvien = d.id_thanhvien", null);
         if (c != null && c.getCount() > 0) {
             c.moveToFirst();
             do {
                 PhieuMuon a = new PhieuMuon();
-                a.setSoPhieu(0);
+                a.setSoPhieu(c.getInt(0));
                 a.setNgayMuon(c.getString(4));
                 a.setNgayTra(c.getString(5));
                 a.setTrangThai(c.getInt(6));
@@ -71,7 +70,9 @@ public class PhieuMuonDAO {
                 a.setTenSach(c.getString(10));
                 a.setNgayXuatBan(c.getString(11));
                 a.setGia(c.getInt(12));
-                a.setSoLuongMuon(c.getInt(14));
+                a.setMaLoai(c.getInt(13));
+                a.setTenLoai(c.getString(14));
+                a.setHoTen(c.getString(16));
                 list.add(a);
             }while (c.moveToNext());
         }
@@ -80,17 +81,19 @@ public class PhieuMuonDAO {
 
     public List<PhieuMuon> getTop10() {
         List<PhieuMuon> list = new ArrayList<>();
-        Cursor c = db.rawQuery("select *,count(a.id_sach) as da from tb_phieuMuon a INNER JOIN tb_sach b on a.id_sach = b.id_sach GROUP by a.id_sach ORDER by da DESC LIMIT 10 ", null);
+        Cursor c = db.rawQuery("select *,count(a.id_sach) as da from tb_phieuMuon a INNER JOIN tb_sach b on a.id_sach = b.id_sach INNER JOIN tb_loaiSach c on b.id_tenLoai = c.id_loaiSach INNER JOIN tb_thanhVien d on a.id_thanhvien = d.id_thanhvien GROUP by a.id_sach ORDER by da DESC LIMIT 10 ", null);
         if (c != null && c.getCount() > 0) {
             c.moveToFirst();
             do {
                 PhieuMuon a = new PhieuMuon();
-                a.setSoPhieu(0);
+                a.setSoPhieu(c.getInt(0));
                 a.setTacGia(c.getString(9));
                 a.setTenSach(c.getString(10));
                 a.setNgayXuatBan(c.getString(11));
                 a.setGia(c.getInt(12));
-                a.setSoLuongMuon(c.getInt(14));
+                a.setMaLoai(c.getInt(13));
+                a.setTenLoai(c.getString(14));
+                a.setHoTen(c.getString(16));
                 list.add(a);
             }while (c.moveToNext());
         }
@@ -102,17 +105,19 @@ public class PhieuMuonDAO {
         String [] date = new String[]{
           tuNgay,denNgay
         };
-        Cursor c = db.rawQuery("SELECT *, COUNT(a.id_sach) AS da FROM tb_phieuMuon a INNER JOIN tb_sach b ON a.id_sach = b.id_sach INNER JOIN tb_loaiSach c ON b.id_tenLoai = c.id_loaiSach WHERE a.ngayMuon BETWEEN ? AND ? GROUP BY a.id_sach;", date);
+        Cursor c = db.rawQuery("SELECT *, COUNT(a.id_sach) AS da FROM tb_phieuMuon a INNER JOIN tb_sach b ON a.id_sach = b.id_sach INNER JOIN tb_loaiSach c ON b.id_tenLoai = c.id_loaiSach INNER JOIN tb_thanhVien d on a.id_thanhvien = d.id_thanhvien WHERE a.ngayMuon BETWEEN ? AND ? GROUP BY a.id_sach;", date);
         if (c != null && c.getCount() > 0) {
             c.moveToFirst();
             do {
                 PhieuMuon a = new PhieuMuon();
-                a.setSoPhieu(0);
+                a.setSoPhieu(c.getInt(0));
                 a.setTacGia(c.getString(9));
                 a.setTenSach(c.getString(10));
                 a.setNgayXuatBan(c.getString(11));
                 a.setGia(c.getInt(12));
-                a.setSoLuongMuon(c.getInt(14));
+                a.setMaLoai(c.getInt(13));
+                a.setTenLoai(c.getString(14));
+                a.setHoTen(c.getString(16));
                 list.add(a);
             }while (c.moveToNext());
         }

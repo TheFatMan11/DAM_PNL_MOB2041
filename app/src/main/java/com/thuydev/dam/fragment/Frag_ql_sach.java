@@ -87,6 +87,13 @@ public class Frag_ql_sach extends Fragment {
         List<LoaiSach> loaiSachList = loaiSachDAO.getAll();
         Adapter_theLoai adapter_theLoai = new Adapter_theLoai(getContext(), loaiSachList);
         spinner.setAdapter(adapter_theLoai);
+        Button Huy = view.findViewById(R.id.btn_Huy_sach);
+        Huy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
         Sach sach = new Sach();
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

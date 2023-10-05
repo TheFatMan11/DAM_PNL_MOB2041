@@ -2,7 +2,7 @@ package com.thuydev.dam.model;
 
 public class PhieuMuon {
     private int soPhieu;
-    private int ID_ThuTHu;
+    private String ID_ThuTHu;
     private int ID_ThanhVien;
     private int ID_Sach;
     private String NgayMuon;
@@ -14,62 +14,27 @@ public class PhieuMuon {
     private String ngayXuatBan;
     private int gia;
     private int soLuongMuon;
+    // dữ liệu loại sách
+    private int maLoai;
+    private String tenLoai;
+    // dữ liệu thành viên
+    private String hoTen;
 
-    public int getSoLuongMuon() {
-        return soLuongMuon;
+    public int getMaLoai() {
+        return maLoai;
     }
 
-    public void setSoLuongMuon(int soLuongMuon) {
-        this.soLuongMuon = soLuongMuon;
+    public String getHoTen() {
+        return hoTen;
     }
 
-    public String getTacGia() {
-        return tacGia;
+    public void setHoTen(String hoTen) {
+        this.hoTen = hoTen;
     }
 
-    public void setTacGia(String tacGia) {
-        this.tacGia = tacGia;
-    }
 
-    public String getTenSach() {
-        return tenSach;
-    }
 
-    public void setTenSach(String tenSach) {
-        this.tenSach = tenSach;
-    }
 
-    public String getNgayXuatBan() {
-        return ngayXuatBan;
-    }
-
-    public void setNgayXuatBan(String ngayXuatBan) {
-        this.ngayXuatBan = ngayXuatBan;
-    }
-
-    public PhieuMuon() {
-    }
-
-    public PhieuMuon(int soPhieu, int ID_ThuTHu, int ID_ThanhVien, int ID_Sach, String ngayMuon, String ngayTra, int trangThai) {
-        this.soPhieu = soPhieu;
-        this.ID_ThuTHu = ID_ThuTHu;
-        this.ID_ThanhVien = ID_ThanhVien;
-        this.ID_Sach = ID_Sach;
-        NgayMuon = ngayMuon;
-        NgayTra = ngayTra;
-        this.trangThai = trangThai;
-    }
-
-    public PhieuMuon(int soPhieu, int ID_ThuTHu, int ID_ThanhVien, int ID_Sach, String ngayMuon, String ngayTra, int trangThai, int gia) {
-        this.soPhieu = soPhieu;
-        this.ID_ThuTHu = ID_ThuTHu;
-        this.ID_ThanhVien = ID_ThanhVien;
-        this.ID_Sach = ID_Sach;
-        NgayMuon = ngayMuon;
-        NgayTra = ngayTra;
-        this.trangThai = trangThai;
-        this.gia = gia;
-    }
 
     public int getSoPhieu() {
         return soPhieu;
@@ -79,11 +44,11 @@ public class PhieuMuon {
         this.soPhieu = soPhieu;
     }
 
-    public int getID_ThuTHu() {
+    public String getID_ThuTHu() {
         return ID_ThuTHu;
     }
 
-    public void setID_ThuTHu(int ID_ThuTHu) {
+    public void setID_ThuTHu(String ID_ThuTHu) {
         this.ID_ThuTHu = ID_ThuTHu;
     }
 
@@ -133,5 +98,52 @@ public class PhieuMuon {
 
     public void setGia(int gia) {
         this.gia = gia;
+    }
+
+    public void setMaLoai(int maLoai) {
+        this.maLoai = maLoai;
+    }
+
+    public String getTenLoai() {
+        return tenLoai;
+    }
+
+    public void setTenLoai(String tenLoai) {
+        this.tenLoai = tenLoai;
+    }
+
+    public int getSoLuongMuon() {
+        return soLuongMuon;
+    }
+
+    public void setSoLuongMuon(int soLuongMuon) {
+        this.soLuongMuon = soLuongMuon;
+    }
+
+    public String getTacGia() {
+        return tacGia;
+    }
+
+    public void setTacGia(String tacGia) {
+        this.tacGia = tacGia;
+    }
+
+    public String getTenSach() {
+        return tenSach;
+    }
+
+    public void setTenSach(String tenSach) {
+        this.tenSach = tenSach;
+    }
+
+    public String getNgayXuatBan() {
+        return ngayXuatBan;
+    }
+
+    public void setNgayXuatBan(String ngayXuatBan) {
+        this.ngayXuatBan = ngayXuatBan;
+    }
+
+    public PhieuMuon() {
     }
 }
