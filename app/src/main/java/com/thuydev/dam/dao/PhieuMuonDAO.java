@@ -62,17 +62,20 @@ public class PhieuMuonDAO {
             c.moveToFirst();
             do {
                 PhieuMuon a = new PhieuMuon();
-                a.setSoPhieu(c.getInt(0));
-                a.setNgayMuon(c.getString(4));
-                a.setNgayTra(c.getString(5));
-                a.setTrangThai(c.getInt(6));
-                a.setTacGia(c.getString(9));
-                a.setTenSach(c.getString(10));
+                a.setSoPhieu(c.getInt(0)); //
+                a.setID_ThanhVien(c.getInt(1));
+                a.setID_ThuTHu(c.getString(2));
+                a.setID_Sach(c.getInt(3));
+                a.setNgayMuon(c.getString(4));//
+                a.setNgayTra(c.getString(5));//
+                a.setTrangThai(c.getInt(6));//
+                a.setTacGia(c.getString(9));//
+                a.setTenSach(c.getString(10));//
                 a.setNgayXuatBan(c.getString(11));
-                a.setGia(c.getInt(12));
+                a.setGia(c.getInt(12));//
                 a.setMaLoai(c.getInt(13));
-                a.setTenLoai(c.getString(14));
-                a.setHoTen(c.getString(16));
+                a.setTenLoai(c.getString(14));//
+                a.setHoTen(c.getString(16));//
                 list.add(a);
             }while (c.moveToNext());
         }
@@ -94,6 +97,7 @@ public class PhieuMuonDAO {
                 a.setMaLoai(c.getInt(13));
                 a.setTenLoai(c.getString(14));
                 a.setHoTen(c.getString(16));
+                a.setSoLuongMuon(c.getInt(19));
                 list.add(a);
             }while (c.moveToNext());
         }

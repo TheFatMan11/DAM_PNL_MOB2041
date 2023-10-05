@@ -7,6 +7,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,21 +62,32 @@ public class Adapter_PhieuMuon extends RecyclerView.Adapter<Adapter_PhieuMuon.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        String mauDo ="#FDC2D0";
+        String mauXanh = "#00ED0A";
+        int mDo = Color.parseColor(mauDo);
+        int mXa = Color.parseColor(mauXanh);
         holder.maPhieu.setText(list.get(position).getSoPhieu() + "");
         holder.tenSach.setText(list.get(position).getTenSach());
         holder.theLoai.setText(list.get(position).getTenLoai());
+        if(list.get(position).getTrangThai()==0){
+            holder.linearLayout.setBackgroundColor(mDo);
+            holder.choPhep.setImageResource(R.drawable.giving);
+        }else {
+            holder.linearLayout.setBackgroundColor(mXa);
+            holder.choPhep.setImageResource(R.drawable.handshake);
+        }
 
         holder.info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                hienThiThem(position);
             }
         });
 
         holder.choPhep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+            choPhep(position);
             }
         });
 
@@ -86,6 +98,64 @@ public class Adapter_PhieuMuon extends RecyclerView.Adapter<Adapter_PhieuMuon.Vi
                 return false;
             }
         });
+    }
+
+    private void choPhep(int p) {
+        PhieuMuon phieuMuon = list.get(p);
+        if(phieuMuon.getTrangThai()==0){
+            phieuMuon.setTrangThai(1);
+            if(phieuMuonDAO.updatePhieuMuon(phieuMuon)>0){
+                Toast.makeText(context, "Trả sách thành công", Toast.LENGTH_SHORT).show();
+                reload();
+            }
+        }else {
+            Toast.makeText(context, "Sách đã được trả", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void hienThiThem(int p) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        LayoutInflater inflater = ((Activity)context).getLayoutInflater();
+        View view = inflater.inflate(R.layout.item_phieumuon_morong,null,false);
+        builder.setView(view);
+        Dialog dialog = builder.create();
+        dialog.show();
+        PhieuMuon phi = list.get(p);
+        TextView maPhieu,thanhVien,tenSach,tenTacGia,theLoai,ngayMuon,ngayTra,gia,trangThai1,trangThai2;
+        maPhieu = view.findViewById(R.id.tv_maphieuMore);
+        thanhVien = view.findViewById(R.id.tv_tenthanhvien_more);
+        tenSach = view.findViewById(R.id.tv_tenSachMuon_more);
+        tenTacGia = view.findViewById(R.id.tv_tacGiaMuon_more);
+        theLoai = view.findViewById(R.id.tv_loaiMuon_more);
+        ngayMuon = view.findViewById(R.id.tv_NgayMuon_more);
+        ngayTra = view.findViewById(R.id.tv_Ngaytra_more);
+        gia = view.findViewById(R.id.tv_giaMuon_more);
+        trangThai1 = view.findViewById(R.id.trangThai);
+        trangThai2 = view.findViewById(R.id.tv_status_more);
+
+        maPhieu.setText(phi.getSoPhieu()+"");
+        thanhVien.setText(phi.getHoTen());
+        tenSach.setText(phi.getTenSach());
+        tenTacGia.setText(phi.getTacGia());
+        theLoai.setText(phi.getTenLoai());
+        ngayMuon.setText(phi.getNgayMuon());
+        ngayTra.setText(phi.getNgayTra());
+        gia.setText(phi.getGia()+"");
+
+        String mauDo ="#FF0000";
+        String mauXanh = "#00ED0A";
+        int mDo = Color.parseColor(mauDo);
+        int mXa = Color.parseColor(mauXanh);
+        if(phi.getTrangThai()==0){
+            trangThai1.setTextColor(mDo);
+            trangThai2.setTextColor(mDo);
+            trangThai2.setText("Chưa trả");
+        }else {
+            trangThai1.setTextColor(mXa);
+            trangThai2.setTextColor(mXa);
+            trangThai2.setText("Đã trả");
+        }
+
     }
 
     private void giuItem(int p) {
@@ -259,6 +329,7 @@ public class Adapter_PhieuMuon extends RecyclerView.Adapter<Adapter_PhieuMuon.Vi
     private void reload() {
         list.clear();
         list.addAll(phieuMuonDAO.getAll());
+        notifyDataSetChanged();
     }
 
     private void getNgay(EditText editText) {
