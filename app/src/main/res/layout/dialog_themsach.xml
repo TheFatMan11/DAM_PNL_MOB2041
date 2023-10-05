@@ -21,6 +21,7 @@
         android:text="Thêm sách"
         android:textColor="#7E4AD6"
         android:textStyle="bold"
+        android:id="@+id/tv_title_sach"
         android:textSize="32dp"/>
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,29 +46,7 @@
             android:paddingLeft="10dp"
             />
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="5dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#9D75F2"
-            android:textStyle="bold"
-            android:text="Loại sách"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Hãy nhập loại"
-            android:id="@+id/edt_loaiSach"
-            android:background="@drawable/shape_edt"
-            android:paddingLeft="10dp"
-            />
-    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -112,6 +91,10 @@
             android:id="@+id/edt_ngayXuatban"
             android:background="@drawable/shape_edt"
             android:paddingLeft="10dp"
+
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
             />
     </LinearLayout>
     <LinearLayout
@@ -133,9 +116,31 @@
             android:layout_height="50dp"
             android:hint="Hãy nhập giá"
             android:id="@+id/edt_gia"
+            android:inputType="number"
             android:background="@drawable/shape_edt"
             android:paddingLeft="10dp"
             />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="5dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#9D75F2"
+            android:textStyle="bold"
+            android:text="Loại sách"/>
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/shape_edt"
+            android:scrollbarStyle="insideOverlay"
+            android:id="@+id/sp_loaiSach"/>
     </LinearLayout>
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="100dp"
@@ -145,6 +150,6 @@
         android:textStyle="bold"
         android:background="@drawable/shape_buton_mo"
         android:textColor="@color/white"
-        android:id="@+id/bnt_add_sach"/>
+        android:id="@+id/btn_add_sach"/>
 </LinearLayout>
 </androidx.cardview.widget.CardView>

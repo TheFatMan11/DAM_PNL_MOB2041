@@ -55,12 +55,12 @@ public class SachDAO {
 
     public List<Sach> getAll(){
         List<Sach> list = new ArrayList<>();
-        Cursor c = db.rawQuery("select * from tb_sach",null);
+        Cursor c = db.rawQuery("select * from tb_sach INNER JOIN tb_loaiSach on tb_sach.id_tenLoai = tb_loaiSach.id_loaiSach",null);
         if(c!=null&&c.getCount()>0){
             c.moveToFirst();
             do {
             Sach a = new Sach(
-                    c.getInt(0),c.getInt(1),
+                    c.getInt(0),c.getInt(1),c.getString(7),
                     c.getString(2),c.getString(3),c.getString(4),c.getInt(5));
             list.add(a);
             }while (c.moveToNext());
