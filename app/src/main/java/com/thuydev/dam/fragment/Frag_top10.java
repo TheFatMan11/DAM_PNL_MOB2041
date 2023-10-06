@@ -21,7 +21,6 @@ import java.util.List;
 
 public class Frag_top10 extends Fragment {
     RecyclerView rc_list;
-    SearchView searchView;
     PhieuMuonDAO phieuMuonDAO;
     List<PhieuMuon> list;
     Adapter_top10 adapter_top10;
@@ -35,7 +34,6 @@ public class Frag_top10 extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         rc_list = view.findViewById(R.id.rcv_listTop10Sach);
-        searchView = view.findViewById(R.id.sv_search_topSach);
         phieuMuonDAO = new PhieuMuonDAO(getContext());
         list = phieuMuonDAO.getTop10();
         adapter_top10 = new Adapter_top10(list,getContext());

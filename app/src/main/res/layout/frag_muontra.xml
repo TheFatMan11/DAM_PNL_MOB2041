@@ -14,14 +14,6 @@
        android:layout_height="wrap_content"
        android:padding="10dp"
       >
-      <androidx.appcompat.widget.SearchView
-          android:layout_width="0dp"
-          android:layout_weight="1"
-          android:layout_height="50dp"
-          app:searchIcon="@drawable/search"
-          app:searchHintIcon="@drawable/search"
-          android:id="@+id/sv_search_muonTra"
-          />
       <ImageButton
           android:layout_width="50dp"
           android:layout_height="50dp"

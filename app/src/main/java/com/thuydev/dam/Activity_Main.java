@@ -114,11 +114,16 @@ public class Activity_Main extends AppCompatActivity {
         if(_thuTHu !=null){
             ImageView avatar = header.findViewById(R.id.imgUsename);
             TextView tenUser = header.findViewById(R.id.lblUsername);
+            TextView chucVu = header.findViewById(R.id.lblchuVu);
             avatar.setImageResource(R.drawable.user);
             tenUser.setText(_thuTHu.getHoTen());
+            if (_thuTHu.getChucVu()==1){
+                chucVu.setText("Admin");
+            }else {
+                chucVu.setText("Thủ thư");
+            }
         }
     }
-
     private void dangXuat() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Thông báo");

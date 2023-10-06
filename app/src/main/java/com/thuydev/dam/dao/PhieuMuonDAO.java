@@ -90,6 +90,7 @@ public class PhieuMuonDAO {
             do {
                 PhieuMuon a = new PhieuMuon();
                 a.setSoPhieu(c.getInt(0));
+                a.setID_Sach(c.getInt(3));
                 a.setTacGia(c.getString(9));
                 a.setTenSach(c.getString(10));
                 a.setNgayXuatBan(c.getString(11));
@@ -115,6 +116,7 @@ public class PhieuMuonDAO {
             do {
                 PhieuMuon a = new PhieuMuon();
                 a.setSoPhieu(c.getInt(0));
+                a.setID_Sach(c.getInt(3));
                 a.setTacGia(c.getString(9));
                 a.setTenSach(c.getString(10));
                 a.setNgayXuatBan(c.getString(11));

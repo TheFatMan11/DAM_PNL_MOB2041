@@ -3,41 +3,29 @@ package com.thuydev.dam.adapter;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.thuydev.dam.R;
-import com.thuydev.dam.dao.LoaiSachDAO;
 import com.thuydev.dam.dao.SachDAO;
-import com.thuydev.dam.model.LoaiSach;
 import com.thuydev.dam.model.PhieuMuon;
 import com.thuydev.dam.model.Sach;
 
-import java.util.Calendar;
 import java.util.List;
 
-public class Adapter_top10 extends RecyclerView.Adapter<Adapter_top10.viewHoder> {
+public class Adapter_thongke extends RecyclerView.Adapter<Adapter_thongke.viewHoder> {
     List<PhieuMuon> list;
     Context context;
     SachDAO sachDAO;
 
-    public Adapter_top10(List<PhieuMuon> list, Context context) {
+    public Adapter_thongke(List<PhieuMuon> list, Context context) {
         this.list = list;
         this.context = context;
         sachDAO = new SachDAO(context);
@@ -55,8 +43,7 @@ public class Adapter_top10 extends RecyclerView.Adapter<Adapter_top10.viewHoder>
     public void onBindViewHolder(@NonNull viewHoder holder, @SuppressLint("RecyclerView") int position) {
         holder.idSach.setText(list.get(position).getID_Sach()+"");
         holder.tenSach.setText(list.get(position).getTenSach());
-        holder.tenloai.setText("Số lượng mượn: ");
-        holder.theLoai.setText(list.get(position).getSoLuongMuon()+"");
+        holder.theLoai.setText(list.get(position).getTenLoai());
 
     }
 

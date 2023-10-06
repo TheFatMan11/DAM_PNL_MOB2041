@@ -9,11 +9,4 @@
     android:layout_height="0dp"
     android:layout_weight="1"
     android:id="@+id/rcv_listTop10Sach"/>
-   <androidx.appcompat.widget.SearchView
-       android:layout_width="match_parent"
-       android:layout_height="50dp"
-       app:searchIcon="@drawable/search"
-       app:searchHintIcon="@drawable/search"
-       android:id="@+id/sv_search_topSach"
-       />
 </LinearLayout>

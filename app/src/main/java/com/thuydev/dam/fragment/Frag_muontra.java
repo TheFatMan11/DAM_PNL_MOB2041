@@ -40,7 +40,6 @@ import java.util.List;
 
 public class Frag_muontra extends Fragment {
 RecyclerView rc_list;
-SearchView search;
 ImageButton them;
 List<PhieuMuon> list;
 Adapter_PhieuMuon adapter_phieuMuon;
@@ -55,13 +54,11 @@ PhieuMuonDAO phieuMuonDAO;
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         rc_list = view.findViewById(R.id.rcv_listMuonTra);
-        search = view.findViewById(R.id.sv_search_muonTra);
         them = view.findViewById(R.id.ibtn_themPhieu);
         phieuMuonDAO = new PhieuMuonDAO(getContext());
         list = phieuMuonDAO.getAll();
         adapter_phieuMuon = new Adapter_PhieuMuon(getContext(),list);
         LinearLayoutManager manager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
-
         rc_list.setAdapter(adapter_phieuMuon);
         rc_list.setLayoutManager(manager);
 
