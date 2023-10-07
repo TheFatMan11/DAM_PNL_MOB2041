@@ -124,6 +124,7 @@ public class PhieuMuonDAO {
                 a.setMaLoai(c.getInt(13));
                 a.setTenLoai(c.getString(14));
                 a.setHoTen(c.getString(16));
+                a.setSoLuongMuon(c.getInt(19));
                 list.add(a);
             }while (c.moveToNext());
         }

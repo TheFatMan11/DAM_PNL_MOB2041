@@ -2,6 +2,7 @@ package com.thuydev.dam.fragment;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +49,7 @@ public class Frag_thongke extends Fragment {
         thongKe = view.findViewById(R.id.btn_thongKe);
         doanhThu = view.findViewById(R.id.tv_doanhthu);
         phieuMuonDAO = new PhieuMuonDAO(getContext());
-        list = phieuMuonDAO.getAll();
+        list = phieuMuonDAO.getTop10();
         adapter_thongke = new Adapter_thongke(list, getContext());
         rc_list.setAdapter(adapter_thongke);
         LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
@@ -78,9 +79,9 @@ public class Frag_thongke extends Fragment {
 
     private void loadDoanhThu(List<PhieuMuon> list) {
         int tong = 0;
-        for (PhieuMuon p : list){
-            tong +=p.getGia();
-        }
+            for (PhieuMuon p : list){
+                tong +=(p.getGia()*p.getSoLuongMuon());
+            }
         doanhThu.setText(""+tong);
     }
 

@@ -43,7 +43,8 @@ public class Adapter_thongke extends RecyclerView.Adapter<Adapter_thongke.viewHo
     public void onBindViewHolder(@NonNull viewHoder holder, @SuppressLint("RecyclerView") int position) {
         holder.idSach.setText(list.get(position).getID_Sach()+"");
         holder.tenSach.setText(list.get(position).getTenSach());
-        holder.theLoai.setText(list.get(position).getTenLoai());
+        holder.tenloai.setText("Số lượng mượn: ");
+        holder.theLoai.setText(list.get(position).getSoLuongMuon()+"");
 
     }
 
