@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,10 +57,11 @@ public class Adapter_thanhVien extends RecyclerView.Adapter<Adapter_thanhVien.Vi
             }
         });
 
-        holder.capNhap.setOnClickListener(new View.OnClickListener() {
+        holder.linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onLongClick(View v) {
                 capNhapThanhVien(position);
+                return false;
             }
         });
     }
@@ -155,15 +157,16 @@ public class Adapter_thanhVien extends RecyclerView.Adapter<Adapter_thanhVien.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView ten, diaChi, email;
-        ImageView capNhap, Xoa;
+        ImageView  Xoa;
+        LinearLayout linearLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ten = itemView.findViewById(R.id.tv_tenThanhvien);
             diaChi = itemView.findViewById(R.id.tv_diaChi_thanhvien);
             email = itemView.findViewById(R.id.tv_Email_thanhVien);
-            capNhap = itemView.findViewById(R.id.iv_updateThanhVien);
             Xoa = itemView.findViewById(R.id.iv_xoaThanhVien);
+            linearLayout = itemView.findViewById(R.id.ll_thanhvien);
         }
     }
 }

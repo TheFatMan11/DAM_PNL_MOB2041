@@ -63,10 +63,11 @@ public class Adapter_nguoiDung extends RecyclerView.Adapter<Adapter_nguoiDung.Vi
             }
         });
 
-        holder.capNhap.setOnClickListener(new View.OnClickListener() {
+        holder.linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onLongClick(View v) {
                 capNhapUser(position);
+                return false;
             }
         });
     }
@@ -164,7 +165,8 @@ public class Adapter_nguoiDung extends RecyclerView.Adapter<Adapter_nguoiDung.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView ten, tenDangNhap, diaChi, email, chucVu;
-        ImageView capNhap, Xoa;
+        ImageView Xoa;
+        LinearLayout linearLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -173,8 +175,8 @@ public class Adapter_nguoiDung extends RecyclerView.Adapter<Adapter_nguoiDung.Vi
             diaChi = itemView.findViewById(R.id.tv_diaChi_user);
             email = itemView.findViewById(R.id.tv_Email_user);
             chucVu = itemView.findViewById(R.id.tv_chucvu_user);
-            capNhap = itemView.findViewById(R.id.iv_update_user);
             Xoa = itemView.findViewById(R.id.iv_xoa_user);
+            linearLayout = itemView.findViewById(R.id.ll_nguoidung);
         }
     }
 }

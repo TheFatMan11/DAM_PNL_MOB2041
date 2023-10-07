@@ -10,6 +10,7 @@
     android:layout_height="wrap_content"
     android:background="#C2FCFD"
     android:padding="10dp"
+    android:id="@+id/ll_nguoidung"
     >
     <ImageView
         android:layout_width="80dp"
@@ -119,16 +120,10 @@
        android:layout_gravity="center"
        android:orientation="vertical">
        <ImageView
-           android:layout_width="20dp"
-           android:layout_height="20dp"
-           android:layout_marginBottom="20dp"
+           android:layout_width="30dp"
+           android:layout_height="30dp"
            android:src="@drawable/bin"
            android:id="@+id/iv_xoa_user"/>
-       <ImageView
-           android:layout_width="20dp"
-           android:layout_height="20dp"
-           android:src="@drawable/update"
-           android:id="@+id/iv_update_user"/>
    </LinearLayout>
 
 </LinearLayout>
