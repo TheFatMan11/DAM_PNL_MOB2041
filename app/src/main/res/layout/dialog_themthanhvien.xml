@@ -82,6 +82,31 @@
             android:layout_height="wrap_content"
             android:textColor="#9D75F2"
             android:textStyle="bold"
+            android:text="Căn cước công dân"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Hãy nhập căn cước"
+            android:inputType="number"
+            android:maxLength="12"
+            android:id="@+id/edt_cccd"
+            android:background="@drawable/shape_edt"
+            android:paddingLeft="10dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#9D75F2"
+            android:textStyle="bold"
             android:text="Email"/>
        <LinearLayout
            android:layout_width="match_parent"

@@ -65,11 +65,12 @@ public class Frag_ql_thanhvien extends Fragment {
         Dialog dialog = builder.create();
         dialog.show();
 
-        EditText ten,diaChi,email;
+        EditText ten,diaChi,email,cccd;
         Button them ;
         ten=view.findViewById(R.id.edt_hoten);
         diaChi = view.findViewById(R.id.edt_diaChi);
         email = view.findViewById(R.id.edt_email);
+        cccd = view.findViewById(R.id.edt_cccd);
         them = view.findViewById(R.id.btn_add_thanhvien);
         Button Huy = view.findViewById(R.id.btn_Huy_thanhvien);
         Huy.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +87,7 @@ public class Frag_ql_thanhvien extends Fragment {
                     _thanhVien.setHoTen(ten.getText().toString().trim());
                     _thanhVien.setDiaChi(diaChi.getText().toString().trim());
                     _thanhVien.setEmail(email.getText().toString().trim()+"@gmail.com");
+                    _thanhVien.setCccd(cccd.getText().toString().trim());
                     if (_thanhVienDAO.addThanhNien(_thanhVien)>0){
                         Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
                         list.clear();

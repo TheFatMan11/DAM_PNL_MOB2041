@@ -5,6 +5,16 @@ public class ThanhVien {
     private String hoTen;
     private String diaChi;
     private String Email;
+    private String cccd;
+
+
+    public ThanhVien(int ID_ThanhVien, String hoTen, String diaChi, String email, String cccd) {
+        this.ID_ThanhVien = ID_ThanhVien;
+        this.hoTen = hoTen;
+        this.diaChi = diaChi;
+        Email = email;
+        this.cccd = cccd;
+    }
 
     public ThanhVien() {
     }
@@ -14,6 +24,14 @@ public class ThanhVien {
         this.hoTen = hoTen;
         this.diaChi = diaChi;
         Email = email;
+    }
+
+    public String getCccd() {
+        return cccd;
+    }
+
+    public void setCccd(String cccd) {
+        this.cccd = cccd;
     }
 
     public int getID_ThanhVien() {

@@ -49,6 +49,7 @@ public class Adapter_thanhVien extends RecyclerView.Adapter<Adapter_thanhVien.Vi
         holder.ten.setText(list.get(position).getHoTen());
         holder.diaChi.setText(list.get(position).getDiaChi());
         holder.email.setText(list.get(position).getEmail());
+        holder.CCCD.setText(list.get(position).getCccd());
 
         holder.Xoa.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,12 +75,13 @@ public class Adapter_thanhVien extends RecyclerView.Adapter<Adapter_thanhVien.Vi
         builder.setView(view);
         Dialog dialog = builder.create();
         dialog.show();
-        EditText ten,diaChi,email;
+        EditText ten,diaChi,email,cccd;
         TextView title;
         Button sua ;
         ten=view.findViewById(R.id.edt_hoten);
         diaChi = view.findViewById(R.id.edt_diaChi);
         email = view.findViewById(R.id.edt_email);
+        cccd = view.findViewById(R.id.edt_cccd);
         sua = view.findViewById(R.id.btn_add_thanhvien);
         title = view.findViewById(R.id.title_thanhvien);
         Button Huy = view.findViewById(R.id.btn_Huy_thanhvien);
@@ -95,6 +97,7 @@ public class Adapter_thanhVien extends RecyclerView.Adapter<Adapter_thanhVien.Vi
         ten.setText(_thanhVien.getHoTen());
         diaChi.setText(_thanhVien.getDiaChi());
         email.setText(catChuoi(p));
+        cccd.setText(_thanhVien.getCccd());
         sua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,6 +105,7 @@ public class Adapter_thanhVien extends RecyclerView.Adapter<Adapter_thanhVien.Vi
                     _thanhVien.setHoTen(ten.getText().toString().trim());
                     _thanhVien.setDiaChi(diaChi.getText().toString().trim());
                     _thanhVien.setEmail(email.getText().toString().trim()+"@gmail.com");
+                    _thanhVien.setCccd(cccd.getText().toString().trim());
                     if (_thanhVienDAO.UpdateThanhNien(_thanhVien)>0){
                         Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
                         list.clear();
@@ -156,7 +160,7 @@ public class Adapter_thanhVien extends RecyclerView.Adapter<Adapter_thanhVien.Vi
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView ten, diaChi, email;
+        TextView ten, diaChi, email,CCCD;
         ImageView  Xoa;
         LinearLayout linearLayout;
 
@@ -165,6 +169,7 @@ public class Adapter_thanhVien extends RecyclerView.Adapter<Adapter_thanhVien.Vi
             ten = itemView.findViewById(R.id.tv_tenThanhvien);
             diaChi = itemView.findViewById(R.id.tv_diaChi_thanhvien);
             email = itemView.findViewById(R.id.tv_Email_thanhVien);
+            CCCD = itemView.findViewById(R.id.tv_CCCD_thanhVien);
             Xoa = itemView.findViewById(R.id.iv_xoaThanhVien);
             linearLayout = itemView.findViewById(R.id.ll_thanhvien);
         }

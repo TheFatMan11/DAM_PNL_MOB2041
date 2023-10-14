@@ -25,6 +25,7 @@ public class ThanhVienDAO {
         values.put("hoten", _thanhVien.getHoTen());
         values.put("diachi", _thanhVien.getDiaChi());
         values.put("email", _thanhVien.getEmail());
+        values.put("cccd",_thanhVien.getCccd());
         return db.insert("tb_thanhVien",null,values);
     }
 
@@ -41,7 +42,7 @@ public class ThanhVienDAO {
         values.put("hoten", _thanhVien.getHoTen());
         values.put("diachi", _thanhVien.getDiaChi());
         values.put("email", _thanhVien.getEmail());
-
+        values.put("cccd",_thanhVien.getCccd());
         String [] index = new String[]{
                 String.valueOf(_thanhVien.getID_ThanhVien())
         };
@@ -55,7 +56,7 @@ public class ThanhVienDAO {
         if(c!=null&&c.getCount()>0){
             c.moveToFirst();
             do {
-                ThanhVien a = new ThanhVien(c.getInt(0),c.getString(1),c.getString(2),c.getString(3));
+                ThanhVien a = new ThanhVien(c.getInt(0),c.getString(1),c.getString(2),c.getString(3),c.getString(4));
                 list.add(a);
             }while (c.moveToNext());
         }

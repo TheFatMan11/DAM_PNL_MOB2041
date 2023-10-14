@@ -80,6 +80,23 @@
                 android:id="@+id/tv_Email_thanhVien"
                 />
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CCCD: "
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID: "
+                android:textStyle="bold"
+                android:id="@+id/tv_CCCD_thanhVien"
+                />
+        </LinearLayout>
     </LinearLayout>
    <LinearLayout
        android:layout_width="wrap_content"
