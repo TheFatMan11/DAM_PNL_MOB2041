@@ -106,13 +106,18 @@ public class Adapter_thanhVien extends RecyclerView.Adapter<Adapter_thanhVien.Vi
                     _thanhVien.setDiaChi(diaChi.getText().toString().trim());
                     _thanhVien.setEmail(email.getText().toString().trim()+"@gmail.com");
                     _thanhVien.setCccd(cccd.getText().toString().trim());
-                    if (_thanhVienDAO.UpdateThanhNien(_thanhVien)>0){
-                        Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
-                        list.clear();
-                        list.addAll(_thanhVienDAO.getAll());
-                        notifyDataSetChanged();
-                        dialog.dismiss();
+                    if(_thanhVien.getCccd().length()==12){
+                        if (_thanhVienDAO.UpdateThanhNien(_thanhVien)>0){
+                            Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
+                            list.clear();
+                            list.addAll(_thanhVienDAO.getAll());
+                            notifyDataSetChanged();
+                            dialog.dismiss();
+                        }
+                    }else {
+                        Toast.makeText(context, "Căn cước phải 12 chữ số", Toast.LENGTH_SHORT).show();
                     }
+
                 }else {
                     Toast.makeText(context, "Không được để trống", Toast.LENGTH_SHORT).show();
                 }

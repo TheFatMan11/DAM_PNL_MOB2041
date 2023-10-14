@@ -88,14 +88,18 @@ public class Frag_ql_thanhvien extends Fragment {
                     _thanhVien.setDiaChi(diaChi.getText().toString().trim());
                     _thanhVien.setEmail(email.getText().toString().trim()+"@gmail.com");
                     _thanhVien.setCccd(cccd.getText().toString().trim());
-                    if (_thanhVienDAO.addThanhNien(_thanhVien)>0){
-                        Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
-                        list.clear();
-                        list.addAll(_thanhVienDAO.getAll());
-                        adapter_thanhVien.notifyDataSetChanged();
-                        dialog.dismiss();
+                    if(_thanhVien.getCccd().length()==12){
+                        if (_thanhVienDAO.addThanhNien(_thanhVien)>0){
+                            Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                            list.clear();
+                            list.addAll(_thanhVienDAO.getAll());
+                            adapter_thanhVien.notifyDataSetChanged();
+                            dialog.dismiss();
+                        }else {
+                            Toast.makeText(getContext(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                        }
                     }else {
-                        Toast.makeText(getContext(), "Email của bạn đã tồn tại vui lòng dùng email khác", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Căn cước phải 12 chữ số", Toast.LENGTH_SHORT).show();
                     }
                 }else {
                     Toast.makeText(getContext(), "Không được để trống", Toast.LENGTH_SHORT).show();
