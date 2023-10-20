@@ -67,4 +67,50 @@ public class SachDAO {
         }
         return list;
     }
+
+    public List<Sach> timKiemn(String name){
+        List<Sach> list = new ArrayList<>();
+        String data [] = new String[]{name};
+        Cursor c = db.rawQuery("SELECT * from tb_sach INNER JOIN tb_loaiSach on tb_sach.id_tenLoai = tb_loaiSach.id_loaiSach WHERE tenSach like ?",data);
+        if(c!=null&&c.getCount()>0){
+            c.moveToFirst();
+            do {
+                Sach a = new Sach(
+                        c.getInt(0),c.getInt(1),c.getString(7),
+                        c.getString(2),c.getString(3),c.getString(4),c.getInt(5));
+                list.add(a);
+            }while (c.moveToNext());
+        }
+        return list;
+    }
+
+    public List<Sach> sapXepgiam(){
+        List<Sach> list = new ArrayList<>();
+        Cursor c = db.rawQuery("SELECT * from tb_sach INNER JOIN tb_loaiSach on tb_sach.id_tenLoai = tb_loaiSach.id_loaiSach ORDER by tenSach DESC ",null);
+        if(c!=null&&c.getCount()>0){
+            c.moveToFirst();
+            do {
+                Sach a = new Sach(
+                        c.getInt(0),c.getInt(1),c.getString(7),
+                        c.getString(2),c.getString(3),c.getString(4),c.getInt(5));
+                list.add(a);
+            }while (c.moveToNext());
+        }
+        return list;
+    }
+
+    public List<Sach> sapXeptang(){
+        List<Sach> list = new ArrayList<>();
+        Cursor c = db.rawQuery("SELECT * from tb_sach INNER JOIN tb_loaiSach on tb_sach.id_tenLoai = tb_loaiSach.id_loaiSach  ",null);
+        if(c!=null&&c.getCount()>0){
+            c.moveToFirst();
+            do {
+                Sach a = new Sach(
+                        c.getInt(0),c.getInt(1),c.getString(7),
+                        c.getString(2),c.getString(3),c.getString(4),c.getInt(5));
+                list.add(a);
+            }while (c.moveToNext());
+        }
+        return list;
+    }
 }

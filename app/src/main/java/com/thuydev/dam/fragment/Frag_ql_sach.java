@@ -3,7 +3,10 @@ package com.thuydev.dam.fragment;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +21,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,8 +41,10 @@ public class Frag_ql_sach extends Fragment {
     RecyclerView rc_listl;
     ImageButton addSach;
     SachDAO sachDAO;
-    List<Sach> list;
+    List<Sach> list,listold;
     Adapter_Sach adapter_sach;
+    SearchView searchView;
+    ImageButton sapxep ;
 
     @Nullable
     @Override
@@ -51,18 +57,69 @@ public class Frag_ql_sach extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         rc_listl = view.findViewById(R.id.rcv_listSach);
         addSach = view.findViewById(R.id.ibtn_add_sach);
+        searchView = view.findViewById(R.id.timKiem);
+        sapxep = view.findViewById(R.id.ibtn_sapxep);
         sachDAO = new SachDAO(getContext());
         list = sachDAO.getAll();
+        listold = list;
         adapter_sach = new Adapter_Sach(list, getContext());
         LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rc_listl.setLayoutManager(manager);
         rc_listl.setAdapter(adapter_sach);
+sapxep.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        sapxep();
+    }
+});
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if(newText.equals("")){
+                    loadData();
+                }else {
+                    list.clear();
+                    list.addAll(sachDAO.timKiemn("%"+newText+"%"));
+                    adapter_sach.notifyDataSetChanged();
+                }
+                return false;
+            }
+        });
         addSach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addSSach();
             }
         });
+    }
+
+    private void sapxep() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        String [] mang = new String[]{
+                "Sắp xếp tăng dần","Sắp xếp giảm dần"
+        };
+        builder.setTitle("Sắp xếp");
+        builder.setItems(mang, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if(which==0){
+                    list.clear();
+                    list.addAll(sachDAO.sapXeptang());
+                    adapter_sach.notifyDataSetChanged();
+                }else {
+                    list.clear();
+                    list.addAll(sachDAO.sapXepgiam());
+                    adapter_sach.notifyDataSetChanged();
+                }
+            }
+        });
+        Dialog dialog = builder.create();
+        dialog.show();
     }
 
     private void addSSach() {
