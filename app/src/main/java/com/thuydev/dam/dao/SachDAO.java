@@ -71,7 +71,7 @@ public class SachDAO {
     public List<Sach> timKiemn(String name){
         List<Sach> list = new ArrayList<>();
         String data [] = new String[]{name};
-        Cursor c = db.rawQuery("SELECT * from tb_sach INNER JOIN tb_loaiSach on tb_sach.id_tenLoai = tb_loaiSach.id_loaiSach WHERE tenSach like ?",data);
+        Cursor c = db.rawQuery("SELECT * from tb_sach INNER JOIN tb_loaiSach on tb_sach.id_tenLoai = tb_loaiSach.id_loaiSach WHERE gia like ?",data);
         if(c!=null&&c.getCount()>0){
             c.moveToFirst();
             do {
@@ -86,7 +86,7 @@ public class SachDAO {
 
     public List<Sach> sapXepgiam(){
         List<Sach> list = new ArrayList<>();
-        Cursor c = db.rawQuery("SELECT * from tb_sach INNER JOIN tb_loaiSach on tb_sach.id_tenLoai = tb_loaiSach.id_loaiSach ORDER by tenSach DESC ",null);
+        Cursor c = db.rawQuery("SELECT * from tb_sach INNER JOIN tb_loaiSach on tb_sach.id_tenLoai = tb_loaiSach.id_loaiSach ORDER by gia DESC ",null);
         if(c!=null&&c.getCount()>0){
             c.moveToFirst();
             do {
