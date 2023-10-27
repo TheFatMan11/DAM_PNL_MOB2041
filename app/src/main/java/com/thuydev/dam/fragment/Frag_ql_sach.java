@@ -41,10 +41,12 @@ public class Frag_ql_sach extends Fragment {
     RecyclerView rc_listl;
     ImageButton addSach;
     SachDAO sachDAO;
-    List<Sach> list,listold;
+    List<Sach> list, listold;
     Adapter_Sach adapter_sach;
     SearchView searchView;
-    ImageButton sapxep ;
+    ImageButton sapxep;
+
+
 
     @Nullable
     @Override
@@ -59,6 +61,7 @@ public class Frag_ql_sach extends Fragment {
         addSach = view.findViewById(R.id.ibtn_add_sach);
         searchView = view.findViewById(R.id.timKiem);
         sapxep = view.findViewById(R.id.ibtn_sapxep);
+
         sachDAO = new SachDAO(getContext());
         list = sachDAO.getAll();
         listold = list;
@@ -66,12 +69,13 @@ public class Frag_ql_sach extends Fragment {
         LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rc_listl.setLayoutManager(manager);
         rc_listl.setAdapter(adapter_sach);
-sapxep.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        sapxep();
-    }
-});
+
+        sapxep.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sapxep();
+            }
+        });
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -80,11 +84,11 @@ sapxep.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                if(newText.equals("")){
+                if (newText.equals("")) {
                     loadData();
-                }else {
+                } else {
                     list.clear();
-                    list.addAll(sachDAO.timKiemn("%"+newText+"%"));
+                    list.addAll(sachDAO.timKiemn("%" + newText + "%"));
                     adapter_sach.notifyDataSetChanged();
                 }
                 return false;
@@ -100,18 +104,18 @@ sapxep.setOnClickListener(new View.OnClickListener() {
 
     private void sapxep() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        String [] mang = new String[]{
-                "Sắp xếp tăng dần","Sắp xếp giảm dần"
+        String[] mang = new String[]{
+                "Sắp xếp tăng dần", "Sắp xếp giảm dần"
         };
         builder.setTitle("Sắp xếp");
         builder.setItems(mang, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if(which==0){
+                if (which == 0) {
                     list.clear();
                     list.addAll(sachDAO.sapXeptang());
                     adapter_sach.notifyDataSetChanged();
-                }else {
+                } else {
                     list.clear();
                     list.addAll(sachDAO.sapXepgiam());
                     adapter_sach.notifyDataSetChanged();
@@ -179,10 +183,10 @@ sapxep.setOnClickListener(new View.OnClickListener() {
                     sach.setTacGia(tacGia.getText().toString().trim());
                     sach.setGia(Integer.parseInt(gia.getText().toString().trim()));
                     sach.setNgayXuatBan(ngayXuatBan.getText().toString().trim());
-                    if(sachDAO.addSach(sach)>0){
+                    if (sachDAO.addSach(sach) > 0) {
                         Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
-                       loadData();
-                       dialog.dismiss();
+                        loadData();
+                        dialog.dismiss();
                     }
                 } else {
                     Toast.makeText(getContext(), "Vui lòng nhập đủ thông tin", Toast.LENGTH_SHORT).show();
@@ -207,7 +211,7 @@ sapxep.setOnClickListener(new View.OnClickListener() {
         DatePickerDialog bangLich = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                  editText.setText(String.format("%d-%02d-%02d", year, month + 1, dayOfMonth));
+                editText.setText(String.format("%d-%02d-%02d", year, month + 1, dayOfMonth));
             }
         }, nam, thang, ngay);
         bangLich.show();
